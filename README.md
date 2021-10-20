@@ -24,6 +24,7 @@
 ## Project Description
  > Your project description should summarize the project you are proposing. Be sure to include:
  > * Why is it important or interesting to you?
+ > We have chosen to integrate the example library system as our project. We believe that this project is important because it represents a real life application    that can be useful in the real world. Furthermore, we will be able to implement knowledge of the STL library through the use of data structures, in which we can apply algorithms in the best case scenario. We find this project interesting because if done well enough we can use this project on our resumes to showcase our skills in C++, git, design patterns, GUI applications, and teamwork. As well, a library system could also be adapted and applied to other things that would use a database, so it has potential beyond just this project.
  > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
  >   * [toolname](link) - Short description
  > * What will be the input/output of your project? What are the features that the project provides?
