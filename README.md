@@ -26,10 +26,35 @@
  > * Why is it important or interesting to you?
  > 
  > We have chosen to integrate the example library system as our project. We believe that this project is important because it represents a real life application    that can be useful in the real world. Furthermore, we will be able to implement knowledge of the STL library through the use of data structures, in which we can apply algorithms in the best case scenario. We find this project interesting because if done well enough we can use this project on our resumes to showcase our skills in C++, git, design patterns, GUI applications, and teamwork. As well, a library system could also be adapted and applied to other things that would use a database, so it has potential beyond just this project.
+ 
  > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
- >   * [toolname](link) - Short description
- > * What will be the input/output of your project? What are the features that the project provides?
- > 
+ 
+ > * [C++](https://isocpp.org/) - C++ programming language 
+ > * [SQLite](https://www.sqlite.org/index.html) - SQLite is a relational database management system
+ > * [Git](https://git-scm.com/) - Open source distributed version control system
+ > * [Github](https://git-scm.com/) - Internet hosting for software development and version control using Git
+ > * [CMAKE](https://cmake.org/) - CMake is cross-platform free and open-source software for build automation, testing, packaging and installation of software by using a compiler-independent method.
+ > * [QT](https://www.qt.io/) - Qt is a widget toolkit for creating graphical user interfaces as well as cross-platform applications
+ > * [UML](https://www.uml.org/) - The Unified Modeling Language is a general-purpose, developmental, modeling language in the field of software engineering that is intended to provide a standard way to visualize the design of a system.
+ > * [Scrum](https://www.scrum.org/) - Scrum is a framework for developing, delivering, and sustaining products in a complex environment, with an initial emphasis on software development
+ > * [ Automated kanban with review](https://github.com/sensorario/projects/projects/2) - Automated kanban with review, Cards automatically move between To do, In progress, and Done columns, with additional triggers for pull request review status.
+
+ 
+ > Inputs
+ ------
+ Database including the following information
+ 1) Book details ( title, author, publisher, isbn , genres),
+ 2) Borrower details (student ID - Date & time borrow)
+ 3) Date & time borrow
+ 4) credentials for administrative account to add/edit/delete books
+ 4) credentials for students same as UCR login information
+ 
+ >Outputs
+ -------
+ 1) Reports about borrowed books and dates to be returned
+ 2) suggestion of books for users based on borrowed history
+ 2) Date & time borrower needs to physically return the books
+ 6) History list of books a borrower had borrowed
  > This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
  > 
  > You also need to set up an empty project board by choosing the  “Automated kanban with review” option on Github. You should also have a Backlog and In testing columns added.
