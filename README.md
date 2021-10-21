@@ -46,13 +46,13 @@
  1) Book details ( title, author, publisher, isbn , genres),
  2) Borrower details (student ID - Date & time borrow)
  3) Date & time borrow
- 4) credentials for administrative account to add/edit/delete books
- 4) credentials for students same as UCR login information
+ 4) Credentials for administrative account to add/edit/delete books
+ 4) Credentials for students same as UCR login information
  
  >Outputs
  -------
  1) Reports about borrowed books and dates to be returned
- 2) suggestion of books for users based on borrowed history
+ 2) Suggestion of books for users based on recent borrowed history
  2) Date & time borrower needs to physically return the books
  6) History list of books a borrower had borrowed
  > This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
