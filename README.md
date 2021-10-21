@@ -16,7 +16,7 @@
   * [SQLite](https://www.sqlite.org/index.html) - SQLite is a relational database management system
   * [Git](https://git-scm.com/) - Open source distributed version control system
   * [Github](https://git-scm.com/) - Internet hosting for software development and version control using Git
-  * [CMAKE](https://cmake.org/) - CMake is cross-platform free and open-source software for build automation, testing, packaging and installation of software by using a  
+  * [CMAKE](https://cmake.org/) - CMake is cross-platform free and open-source software for build automation, testing, packaging and installation of software by using a 
     compiler-independent method.
   * [QT](https://www.qt.io/) - Qt is a widget toolkit for creating graphical user interfaces as well as cross-platform applications
   * [UML](https://www.uml.org/) - The Unified Modeling Language is a general-purpose, developmental, modeling language in the field of software engineering that is intended 
