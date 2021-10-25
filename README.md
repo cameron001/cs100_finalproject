@@ -42,6 +42,14 @@
  2) Suggestion of books for users based on recent borrowed history
  3) Date & time borrower needs to physically return the books
  4) History list of books a borrower had borrowed
+ 
+ 
+ ### Features
+ 1) User management module
+ 2) Online Public Access
+ 3) Borrowing, renewing and returing books 
+ 4) Searching books information 
+ 
 
  > 
  ## Phase II
