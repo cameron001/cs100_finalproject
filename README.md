@@ -51,17 +51,68 @@
  4) Searching books information 
  
 
- > 
- ## Phase II
- > In addition to completing the "Class Diagram" section below, you will need to:
- > * Create an "Epic" (note) for each feature and each design pattern and assign them to the appropriate team member. Place these in the `Backlog` column
- > * Complete your first *sprint planning* meeting to plan out the next 7 days of work.
- >   * Create smaller actionable development tasks as issues and assign them to team members. Place these in the `TODO` column.
- >   * These cards should represent roughly 7 days worth of development time for your team, taking you until your first meeting with the TA
- >   
-## Class Diagram
- > Include a class diagram(s) for your project and a description of the diagram(s). Your class diagram(s) should include all the main classes you plan for the project. This should be in sufficient detail that another group could pick up the project this point and successfully complete it. Use proper UML notation (as discussed in the course slides).
+ ## Factory Design Pattern
  
+ ### Book Factory
+  For our class diagram we have chosen the factory design pattern which means that we create an
+object without exposing the creation logic to the client and refer to newly created objects using a
+common interface. We believe that this fits our project best because it will allow us to have a
+“factory” of different types of books. In our project the book class is the interface, which will
+implement the classes textBooks, refBooks, and journals. The interface will have a private
+member named id which is an integer and will contain a single public function that is called
+getBookDetails() which will return a string. The textbook class will take in several private
+members called title which is a string, author which is a string, ISBN which is a string, publisher
+which is a string, bookGenre which is a string, and bookType which is a string. It will inherit
+from the book class to take in the id member variable and the getBookDetails() function. The
+refBooks class will declare three private variables title which is a string, ISBN which is a string,
+and publisher which is a string. It will inherit from the book class and take in the members of id
+and getBookDetails(). The journal class will declare two private variables named journalTitle
+which is a string and publisher which is a string. It will inherit from the book class and take the
+id and getBookDetails() members. We have a factory class which will generate the objects of the
+concrete class, which is named bookCreatorFactory. It will implement the getBookDetails()
+function which will return a string.
+
+### Client Interaction
+  For client interaction we have a user class which will consist of 5 private variables:
+firstName which is a string, lastName which is a string, username which is a string, password
+which is a string, and userId which is an int. It will have a public member function of
+displayProfile() which will return a string. The student class will inherit from the user class and
+will add two private variables. StudentId which is a string, accountDebt which is a double, and
+total books which is a vector of the book class. It will have public member functions called
+getAccountDebt() which will return a double, printBooks() which will be void, and it will inherit
+displayProfile() from the user class. FaculStaff will also inherit from user and will extend into
+having an employeeId which is a private string variable and a department which is a string
+variable. It will also have public member functions of displayProfile(). The librarian class will
+inherit from user and have two private variables employeeId which is a string and department
+which is a string. It will have public member functions of displayProfile(). The librarian will
+“create” the transaction class. This class will have five private member variables called transId
+which is an int, userId which is an int, bookId which is an int, issueDate which is a string, and
+dueDate which is a string. The class will consist of the public members createTrans() which will
+be void, retrieveTrans(int transId) which will return a string, and deleteTrans(transId) which will
+return a boolean value of true if the transaction was deleted and false otherwise. The librarian can
+also create the fines class. This class will have six private member variables called fineId which is
+an int, transID which is an int, fineAmount which is a double, fineDueDate which is a string,
+userId which is a string, and finePaid which is a bool. It will have the public member functions of
+createFine() which is a string and updateFine() which is a void. The fines class will interact with
+the facultStaff class by allowing the facultStaff to pay fines. It will also interact with the student
+class so the students can pay fines.
+
+### Library System Database
+  Finally, we will be storing this information in a database class. This class will have two
+private members called query which is a sqlite3 variable. It will also have another sqlite3 variable
+called db which will point to the database. There will be several public functions which are
+addUser() which is a void, getUsers() which returns a vector of strings, addBook(string&) which
+will be a void, editBook(string&) which will be void, deleteBook(string&, string&) which will
+be void, getBooks() which will be void, displaySearch(string) which will return a book,
+showUserDebt(double) which will be void, showUserBooks(string&) which will be void,
+createCheckout(string&) which will return a vector, and saveCheckout(vector) which will be
+void
+    
+## Class Diagram
+
+### Factory Pattern
+
+![Class Diagram Library System (1)](https://user-images.githubusercontent.com/86706385/140853526-22b44b07-5032-45e3-a5c7-ea2169b0a8eb.jpeg) 
  ## Phase III
  > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
  > * Before the meeting you should perform a sprint plan like you did in Phase II.
