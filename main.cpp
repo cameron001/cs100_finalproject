@@ -1,8 +1,9 @@
-#include "mainwindow.h"
+#include "mainwindowxxx.h"
 #include "database.h"
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
+#include "homescreen.h"
 
 int main(int argc, char *argv[])
 {
@@ -18,7 +19,7 @@ int main(int argc, char *argv[])
         }
     }
     Database* DB = Database::getInstance();
-    MainWindow w;
+    homeScreen w;
     w.show();
     return a.exec();
 }

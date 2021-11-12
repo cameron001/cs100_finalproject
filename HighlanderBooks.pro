@@ -10,15 +10,18 @@ CONFIG += c++11
 
 SOURCES += \
     database.cpp \
-    main.cpp \
-    mainwindow.cpp
+    existinguserloginpage.cpp \
+    homescreen.cpp \
+    main.cpp
 
 HEADERS += \
     database.h \
-    mainwindow.h
+    existinguserloginpage.h \
+    homescreen.h
 
 FORMS += \
-    mainwindow.ui
+    existinguserloginpage.ui \
+    homescreen.ui
 
 TRANSLATIONS += \
     HighlanderBooks_en_US.ts
