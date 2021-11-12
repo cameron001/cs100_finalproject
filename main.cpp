@@ -1,4 +1,3 @@
-#include "mainwindowxxx.h"
 #include "database.h"
 #include <QApplication>
 #include <QLocale>
