@@ -2,6 +2,7 @@
 #define HOMESCREEN_H
 
 #include "existinguserloginpage.h"
+#include "librarianlogin.h"
 
 #include <QMainWindow>
 //Define needed helpers provided by QT
@@ -20,6 +21,7 @@
 #include <QFileInfo>
 #include <QSqlTableModel>
 #include <iostream>
+#include <QtSql>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class homeScreen; }
@@ -133,7 +135,17 @@ public:
         */
        void on_dynamicButton_clicked();
 
-   public slots:
+       /**
+         @brief    createLibrarianLoginButton       A public member function that creates the login button. This button when
+                                                       pressed will take the user to a specific login page for all our members
+         @author   blake2703
+         @date     11/10/2021
+         */
+       void createLibrarianLoginButton();
+
+       void on_librarianLoginButton_clicked();
+
+public slots:
        /**
          @brief    onTextEdited   A public slot that will connect to the first and last name line edit functions. This
                                   function determines if the line edit has been edited by the user. If edited, it displays
@@ -147,6 +159,7 @@ public:
 private:
     QString firstName;
     QString lastName;
+    QSqlQuery query;
     Ui::homeScreen *ui;
 };
 #endif // HOMESCREEN_H

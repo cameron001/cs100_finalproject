@@ -12,19 +12,27 @@ SOURCES += \
     database.cpp \
     existinguserloginpage.cpp \
     homescreen.cpp \
-    main.cpp
+    librarianlogin.cpp \
+    main.cpp \
+    studentaccountpage.cpp \
+    user.cpp
 
 HEADERS += \
     database.h \
     existinguserloginpage.h \
-    homescreen.h
+    homescreen.h \
+    librarianlogin.h \
+    studentaccountpage.h \
+    user.h
 
 FORMS += \
     existinguserloginpage.ui \
-    homescreen.ui
+    homescreen.ui \
+    librarianlogin.ui \
+    studentaccountpage.ui
 
 TRANSLATIONS += \
-    HighlanderBooks_en_US.ts
+    HighlanderBooks_en_US.ts \
 CONFIG += lrelease
 CONFIG += embed_translations
 

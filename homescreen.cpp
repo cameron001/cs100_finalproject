@@ -20,15 +20,16 @@ homeScreen::homeScreen(QWidget *parent)
     createpasswordEdit();
     createHeadingLabel();
     createDynamicButton();
+    createLibrarianLoginButton();
 
     QSqlQuery query;
 
 
-       query.exec("SELECT * FROM books");
-       while(query.next())
-       {
-           std::cout<< query.value("title").toString().toStdString()<<std::endl;
-       }
+    query.exec("SELECT * FROM books");
+    while(query.next())
+    {
+        std::cout<< query.value("title").toString().toStdString()<<std::endl;
+    }
 }
 
 homeScreen::~homeScreen()
@@ -42,10 +43,10 @@ void homeScreen::centerAndResize()
     QRect screenGeometry = screen->geometry();
     int height = screenGeometry.height() * 9;
     int width = screenGeometry.width() * 9;
-//    //Grab screen size for this computer
+    //    //Grab screen size for this computer
     QSize newSize(width, height);
     setGeometry(height, width, height, width);
-//    //Set Screensize
+    //    //Set Screensize
 }
 
 void homeScreen::createWelcomeLabel()
@@ -200,43 +201,66 @@ void homeScreen::onTextEdited()
 
 void homeScreen::on_existingUserLoginButton_clicked()
 {
-        existingUserLoginPage newLogin;
-        newLogin.setModal(true);
-        newLogin.show();
-        newLogin.exec();
+    existingUserLoginPage newLogin;
+    newLogin.setModal(true);
+    newLogin.show();
+    newLogin.exec();
 }
 
 
 void homeScreen::on_dynamicButton_clicked()
 {
-    //run query to add user name to database
-    //    data.close();
-    //    data.removeDatabase("first");
-
-    //    data = QSqlDatabase::addDatabase("QSQLITE", "first");
-    //    data.setDatabaseName("/Users/blakedickerson/Documents/SQLite/Food_Log.db");
-
-    //    firstName = ui->firstNameLineEdit->text();
-    //    lastName = ui->lastNameLineEdit->text();
-
-    //    if (data.open())
-    //    {
-    //        QSqlQuery query(data);
-    //        query.prepare(QString("INSERT INTO Users (firstName, lastName) VALUES (:firstName, :lastName)"));
-    //        query.bindValue(0, firstName);
-    //        query.bindValue(1, lastName);
-    //        if (!query.exec())
-    //        {
-    //            QMessageBox::warning(this, "Fail", "Query did not execute");
-    //        }
-    //        else
-    //        {
-    //            //if we good, then we open new page
-    //            newUserSignUp newUser;
-    //            newUser.setModal(true);
-    //            newUser.exec();
-    //  }
-    //}
+        QString firstname = ui->firstNameLineEdit->text();
+        QString lastname = ui->lastNameLineEdit->text();
+        QString username = ui->usernameEdit->text();
+        QString password = ui->passwordEdit->text();
+         query.prepare("INSERT INTO users ("
+                                        "firstname, "
+                                        "lastname, "
+                                        "username, "
+                                        "password) "
+                                        "VALUES (?, ?, ?, ?);");
+           query.addBindValue(firstname);
+           query.addBindValue(lastname);
+           query.addBindValue(username);
+           query.addBindValue(password);
+            if (!query.exec())
+            {
+                qDebug() << query.lastError();
+                qDebug() << "query did not execute\n";
+                //QMessageBox::warning(this, "Fail", "Query did not execute");
+            }
+            else
+            {
+                //if we good, then we open new page
+                studentAccountPage newUser;
+                newUser.setModal(true);
+                newUser.exec();
+            }
 }
 
+void homeScreen::createLibrarianLoginButton()
+{
+    //create font
+    QFont userFont("Courier", 15, QFont::Bold);
+    ui->librarianLoginButton->setFont(userFont);
+    ui->librarianLoginButton->setText("If you are a librarian login here");
+    ui->librarianLoginButton->setStyleSheet("background-color: black");
+    //Get screen size to center label
+    QScreen *screen = QGuiApplication::primaryScreen();
+    QRect screenGeometry = screen->geometry();
+    int x = (.9 * screenGeometry.width() - ui->librarianLoginButton->width ()) / 2;
+    int y = (.9 * screenGeometry.height() - ui->librarianLoginButton->height ()) / 2;
+    ui->librarianLoginButton->setGeometry(x - 100, y + 350, 400, 25);
+}
+
+
+
+void homeScreen::on_librarianLoginButton_clicked()
+{
+        librarianLogin newLogin;
+        newLogin.setModal(true);
+        newLogin.show();
+        newLogin.exec();
+}
 
