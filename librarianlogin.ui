@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>existingUserLoginPage</class>
- <widget class="QDialog" name="existingUserLoginPage">
+ <class>librarianLogin</class>
+ <widget class="QDialog" name="librarianLogin">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,24 +13,11 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="loginButton">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>80</y>
-     <width>80</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>PushButton</string>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="usernameEdit">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>140</y>
+     <x>10</x>
+     <y>70</y>
      <width>113</width>
      <height>24</height>
     </rect>
@@ -39,8 +26,8 @@
   <widget class="QLineEdit" name="passwordEdit">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>220</y>
+     <x>20</x>
+     <y>130</y>
      <width>113</width>
      <height>24</height>
     </rect>
@@ -49,14 +36,27 @@
   <widget class="QLabel" name="loginLabel">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>30</y>
+     <x>180</x>
+     <y>40</y>
      <width>60</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="loginButton">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>110</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>PushButton</string>
    </property>
   </widget>
  </widget>

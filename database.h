@@ -16,8 +16,13 @@
 #include <QVariant>
 #include <QtDebug>
 #include <QSqlTableModel>
+#include <QMap>
+#include <QMessageBox>
+
+#include "user.h"
 
 
+class user;
 /**
  * @brief The Database class
  * is used to access the database to use in the program
@@ -31,6 +36,10 @@ public:
      */
     static Database* getInstance();
 
+     user* login(QString username, QString password);
+
+
+
 private:
     /**
      * @brief Class constructor
@@ -39,6 +48,12 @@ private:
      */
     Database();
     static Database* instance;
+
+    QSqlQuery query;
+    QMap<QString, QMap<QString, user*> > userDbCacheLogin;
+
+
+
 
 };
 

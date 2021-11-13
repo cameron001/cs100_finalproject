@@ -1,38 +1,40 @@
-#include "existinguserloginpage.h"
-#include "ui_existinguserloginpage.h"
+#include "librarianlogin.h"
+#include "ui_librarianlogin.h"
 
-existingUserLoginPage::existingUserLoginPage(QWidget *parent) :
+librarianLogin::librarianLogin(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::existingUserLoginPage)
+    ui(new Ui::librarianLogin)
 {
     ui->setupUi(this);
+    //resize the page to line up everything
     centerAndResize();
     //change background color to white
     setStyleSheet("background-color: white");
     createLoginLabel();
-    createLoginButton();
-    createusernameEdit();
     createpasswordEdit();
+    createusernameEdit();
+    createLoginButton();
 }
 
-existingUserLoginPage::~existingUserLoginPage()
+librarianLogin::~librarianLogin()
 {
     delete ui;
 }
 
-void existingUserLoginPage::centerAndResize()
+
+void librarianLogin::centerAndResize()
 {
+    // Grab screen size for this computer
     QScreen *screen = QGuiApplication::primaryScreen();
     QRect screenGeometry = screen->geometry();
     int height = screenGeometry.height() * 9;
     int width = screenGeometry.width() * 9;
-    //    //Grab screen size for this computer
+    //Set Screensize
     QSize newSize(width, height);
     setGeometry(0, 0, height, width);
-    //    //Set Screensize
 }
 
-void existingUserLoginPage::createLoginLabel()
+void librarianLogin::createLoginLabel()
 {
     //Create a font to use
         QFont welcomeFont("Courier", 30, QFont::Bold);
@@ -48,7 +50,7 @@ void existingUserLoginPage::createLoginLabel()
         ui->loginLabel->setGeometry(x + 25, y - 100, 150, 50);
  }
 
-void existingUserLoginPage::createusernameEdit()
+void librarianLogin::createusernameEdit()
 {
     //create font
     QFont lastNameFont("Courier", 25, QFont::Bold);
@@ -63,7 +65,7 @@ void existingUserLoginPage::createusernameEdit()
     ui->usernameEdit->setGeometry(x - 65, y + 15, 375, 35);
 }
 
-void existingUserLoginPage::createpasswordEdit()
+void librarianLogin::createpasswordEdit()
 {
     //create font
     QFont lastNameFont("Courier", 25, QFont::Bold);
@@ -79,7 +81,7 @@ void existingUserLoginPage::createpasswordEdit()
     ui->passwordEdit->setGeometry(x - 65, y + 100, 375, 35);
 }
 
-void existingUserLoginPage::createLoginButton()
+void librarianLogin::createLoginButton()
 {
     //create font
     QFont dynamicFont("Courier", 15, QFont::Bold);
@@ -93,35 +95,3 @@ void existingUserLoginPage::createLoginButton()
     int y = (.9 * screenGeometry.height() - ui->loginButton->height ()) / 2;
     ui->loginButton->setGeometry(x + 60, y + 180, 100, 25);
 }
-
-
-void existingUserLoginPage::on_loginButton_clicked()
-{
-    Database *db = Database::getInstance();
-    QString username = ui->usernameEdit->text();
-    QString password = ui->passwordEdit->text();
-    //db->login(username, password);
-    if (username == "blake" && password == "blah")
-    {
-        QMessageBox success;
-        success.setText("Success! Username and password is correct");
-        success.setIcon(QMessageBox::Warning);
-        success.setWindowTitle("Invalid user");
-        success.exec();
-        //open new page
-        studentAccountPage newLogin;
-        newLogin.setModal(true);
-        this->hide();
-        newLogin.show();
-        newLogin.exec();
-    }
-    else
-    {
-        QMessageBox error;
-        error.setText("Error! Username or password is incorrect");
-        error.setIcon(QMessageBox::Warning);
-        error.setWindowTitle("Invalid user");
-        error.exec();
-    }
-}
-
