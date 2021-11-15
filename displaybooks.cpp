@@ -34,7 +34,6 @@ void DisplayBooks::populateDataSet()
     BooksFactory b(0);
     Book* bk = b.getBooks();
      vector<Book*> tBooks = bk->getBookObjects();
-     std::cout<<"size"<<tBooks.size()<<std::endl;
     int row=0;
     int col=0;
     model->setHorizontalHeaderItem( 0,new QStandardItem("ISBN"));
@@ -70,12 +69,10 @@ void DisplayBooks::populateDataSet()
 void DisplayBooks::onTableClicked(const QModelIndex &index)
 {
     if (index.isValid()) {
-           // QString cellText = index.data().toString();
             int bookID=index.data( Qt::UserRole+1).toInt();
-            std::cout<<"cccccc"<<bookID;
             BooksFactory b(0);
             Book* bk = b.getBooks()->getBookDetails(bookID);
-            QString str="<table  cellpadding=\"3\" border=\"0\" style=\"font-size:14px\"  ><tr><td  ><b> Title: </b> "+QString::fromStdString(bk->getTitle())+"</td><td ><b> Author: </b>"+QString::fromStdString(bk->getAuthor())+"</td></tr><tr><td ><b> Publisher: </b>"+QString::fromStdString(bk->getPublisher())+"</td><td ><b> ISBN: </b>"+QString::fromStdString(bk->getIsbn())+"</td></tr><tr><td ><b> Rating: </b>"+QString::fromStdString(bk->getRating())+"</td><td ><b> Book Format: </b>"+QString::fromStdString(bk->getBookFormat())+"</td></tr><tr><td ><b> Number od Pages: </b>"+QString::number(bk->getePages())+"</td><td ><b> publish Date: </b>"+QString::fromStdString(bk->getPublishDate())+"</td></tr></table>";
+            QString str="<table  cellpadding=\"3\" border=\"0\" style=\"font-size:14px\"  ><tr><td width=\"250\" ><b> Title: </b> "+QString::fromStdString(bk->getTitle())+"</td><td width=\"250\" ><b> Author: </b>"+QString::fromStdString(bk->getAuthor())+"</td></tr><tr><td ><b> Publisher: </b>"+QString::fromStdString(bk->getPublisher())+"</td><td ><b> ISBN: </b>"+QString::fromStdString(bk->getIsbn())+"</td></tr><tr><td ><b> Rating: </b>"+QString::fromStdString(bk->getRating())+"</td><td ><b> Book Format: </b>"+QString::fromStdString(bk->getBookFormat())+"</td></tr><tr><td ><b> Number od Pages: </b>"+QString::number(bk->getePages())+"</td><td ><b> publish Date: </b>"+QString::fromStdString(bk->getPublishDate())+"</td></tr><tr><td ><b> Language: </b>"+QString::fromStdString(bk->getLanguage())+"</td><td ><b> Price: </b>$"+QString::number(bk->getPrice())+"</td></tr></table>";
 
             QNetworkAccessManager *nam = new QNetworkAccessManager(this);
             connect(nam, &QNetworkAccessManager::finished, this, &DisplayBooks::downloadFinished);

@@ -40,9 +40,9 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>379</y>
+     <y>380</y>
      <width>851</width>
-     <height>131</height>
+     <height>161</height>
     </rect>
    </property>
    <property name="widgetResizable">
@@ -54,7 +54,7 @@
       <x>0</x>
       <y>0</y>
       <width>849</width>
-      <height>129</height>
+      <height>159</height>
      </rect>
     </property>
    </widget>
@@ -76,7 +76,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>560</y>
+     <y>580</y>
      <width>841</width>
      <height>191</height>
     </rect>
@@ -89,7 +89,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>520</y>
+     <y>560</y>
      <width>851</width>
      <height>31</height>
     </rect>

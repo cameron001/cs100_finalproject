@@ -1,5 +1,7 @@
 QT       += core gui sql
 
+QT += network
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -10,6 +12,7 @@ CONFIG += c++11
 
 SOURCES += \
     database.cpp \
+    displaybooks.cpp \
     existinguserloginpage.cpp \
     homescreen.cpp \
     librarianlogin.cpp \
@@ -18,7 +21,11 @@ SOURCES += \
     user.cpp
 
 HEADERS += \
+    TextBook.h \
+    book.h \
+    booksfactory.h \
     database.h \
+    displaybooks.h \
     existinguserloginpage.h \
     homescreen.h \
     librarianlogin.h \
@@ -26,6 +33,7 @@ HEADERS += \
     user.h
 
 FORMS += \
+    displaybooks.ui \
     existinguserloginpage.ui \
     homescreen.ui \
     librarianlogin.ui \
