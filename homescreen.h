@@ -3,6 +3,7 @@
 
 #include "existinguserloginpage.h"
 #include "librarianlogin.h"
+#include "displaybooks.h"
 
 #include <QMainWindow>
 //Define needed helpers provided by QT
@@ -22,6 +23,7 @@
 #include <QSqlTableModel>
 #include <iostream>
 #include <QtSql>
+#include "booksfactory.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class homeScreen; }
@@ -145,6 +147,19 @@ public:
 
        void on_librarianLoginButton_clicked();
 
+       /**
+         @brief    createListBooks       A public member function that shows a buttonthat list Text books. This button when
+                                                       pressed will take the user to a new window that list books
+         @author   mibra032
+         @date     11/14/2021
+         */
+
+       void createListBooks();
+
+
+
+       void on_booksList_clicked();
+
 public slots:
        /**
          @brief    onTextEdited   A public slot that will connect to the first and last name line edit functions. This
@@ -154,6 +169,8 @@ public slots:
          @date     11/10/2021
         */
        void onTextEdited();
+
+
 
 
 private:
