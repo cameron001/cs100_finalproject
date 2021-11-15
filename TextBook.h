@@ -171,7 +171,10 @@ public:
      void setPrice(double pr){ price=pr;}
 
      ~TextBook(){
-       // std::remove(allBooks.begin(), allBooks.end(), NULL);
+         for (int i = 0; i < allBooks.size(); ++i) {
+             delete  allBooks[i];
+         }
+         allBooks.clear();
      }
 
 private:
