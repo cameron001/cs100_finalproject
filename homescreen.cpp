@@ -5,6 +5,7 @@ homeScreen::homeScreen(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::homeScreen)
 {
+
     //create mainwindow
     ui->setupUi(this);
     //resize the page to line up everything
@@ -21,15 +22,17 @@ homeScreen::homeScreen(QWidget *parent)
     createHeadingLabel();
     createDynamicButton();
     createLibrarianLoginButton();
+    createListBooks();
 
-    QSqlQuery query;
+
+//    QSqlQuery query;
 
 
-    query.exec("SELECT * FROM books");
-    while(query.next())
-    {
-        std::cout<< query.value("title").toString().toStdString()<<std::endl;
-    }
+//    query.exec("SELECT * FROM books");
+//    while(query.next())
+//    {
+//        std::cout<< query.value("title").toString().toStdString()<<std::endl;
+//    }
 }
 
 homeScreen::~homeScreen()
@@ -262,5 +265,31 @@ void homeScreen::on_librarianLoginButton_clicked()
         newLogin.setModal(true);
         newLogin.show();
         newLogin.exec();
+}
+
+
+void homeScreen::createListBooks()
+{
+    QFont userFont("Courier", 15, QFont::Bold);
+    ui->booksList->setFont(userFont);
+    ui->booksList->setText("List Textbooks");
+    ui->booksList->setStyleSheet("background-color: black");
+    //Get screen size to center label
+    QScreen *screen = QGuiApplication::primaryScreen();
+    QRect screenGeometry = screen->geometry();
+    int x = (.9 * screenGeometry.width() - ui->booksList->width ()) / 2;
+    int y = (.9 * screenGeometry.height() - ui->booksList->height ()) / 2;
+    ui->booksList->setGeometry(x - 100, y + 150, 400, 25);
+}
+
+
+
+
+void homeScreen::on_booksList_clicked()
+{
+    DisplayBooks newDisplayBook;
+    newDisplayBook.setModal(true);
+    newDisplayBook.show();
+    newDisplayBook.exec();
 }
 
