@@ -77,7 +77,7 @@ public:
     {
 
         QSqlQuery query;
-        query.exec("SELECT * from books where book_type=0 limit 0,100");
+        query.exec("SELECT * from books where book_type=0 ");
         while(query.next())
         {
             Book * books= new TextBook();
@@ -117,7 +117,7 @@ public:
     }
       /*getters*/
     int getID(){return id;}
-    int getBookType(){return bookType;}
+    int getBookType(){return 0;}
     string getSeries(){return series;}
     string getTitle(){return title;}
     string getAuthor(){return author;}
