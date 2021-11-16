@@ -52,6 +52,8 @@ private:
     QSqlQuery query;
     QMap<QString, QMap<QString, user*> > userDbCacheLogin;
 
+    ~Database();
+
 
 
 

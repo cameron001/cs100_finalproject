@@ -46,3 +46,7 @@ user* Database::login(QString username, QString password)
     return userDbCacheLogin[username][password];
 }
 
+Database::~Database(){
+    this->close();
+    instance=nullptr;
+}
