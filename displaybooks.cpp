@@ -33,7 +33,12 @@ void DisplayBooks::populateDataSet()
     ui->booksDataSet->setModel(model);
     BooksFactory b(0);
     Book* bk = b.getBooks();
-     vector<Book*> tBooks = bk->getBookObjects();
+    vector<Book*> tBooks = bk->getBookObjects();
+
+    BooksFactory b2(1);
+    Book* bk2 = b2.getBooks();
+    vector<Book*> tBooks2 = bk2->getBookObjects();
+
     int row=0;
     int col=0;
     model->setHorizontalHeaderItem( 0,new QStandardItem("ISBN"));
@@ -52,13 +57,33 @@ void DisplayBooks::populateDataSet()
 
              QStandardItem* x =  new QStandardItem();
              x->setData(book_ptr->getID(), Qt::UserRole+1);
+             x->setData(book_ptr->getBookType(), Qt::UserRole+2);
              x->setText(QString::fromStdString(book_ptr->getIsbn()));
-
+qDebug()<<book_ptr->getID()<<"-"<<book_ptr->getBookType();
                 model->setItem(row,col,x);
 
                model->setItem(row,col+1,  new QStandardItem(QString::fromStdString(book_ptr->getTitle())));
                model->setItem(row,col+2,new QStandardItem(QString::fromStdString(book_ptr->getAuthor())));
                model->setItem(row,col+3,new QStandardItem(QString::fromStdString(book_ptr->getPublisher())));
+               row++;
+
+
+   }
+
+    for (auto& book_ptr2 : tBooks2)
+    {
+               int col=0;
+
+             QStandardItem* x =  new QStandardItem();
+             x->setData(book_ptr2->getID(), Qt::UserRole+1);
+             x->setData(book_ptr2->getBookType(), Qt::UserRole+2);
+             x->setText(QString::fromStdString(book_ptr2->getIsbn()));
+qDebug()<<book_ptr2->getID()<<"-"<<book_ptr2->getBookType();
+             model->setItem(row,col,x);
+
+               model->setItem(row,col+1,  new QStandardItem(QString::fromStdString(book_ptr2->getTitle())));
+               model->setItem(row,col+2,new QStandardItem(QString::fromStdString(book_ptr2->getAuthor())));
+               model->setItem(row,col+3,new QStandardItem(QString::fromStdString(book_ptr2->getPublisher())));
                row++;
 
 
@@ -70,13 +95,43 @@ void DisplayBooks::onTableClicked(const QModelIndex &index)
 {
     if (index.isValid()) {
             int bookID=index.data( Qt::UserRole+1).toInt();
-            BooksFactory b(0);
-            Book* bk = b.getBooks()->getBookDetails(bookID);
-            QString str="<table  cellpadding=\"3\" border=\"0\" style=\"font-size:14px\"  ><tr><td width=\"250\" ><b> Title: </b> "+QString::fromStdString(bk->getTitle())+"</td><td width=\"250\" ><b> Author: </b>"+QString::fromStdString(bk->getAuthor())+"</td></tr><tr><td ><b> Publisher: </b>"+QString::fromStdString(bk->getPublisher())+"</td><td ><b> ISBN: </b>"+QString::fromStdString(bk->getIsbn())+"</td></tr><tr><td ><b> Rating: </b>"+QString::fromStdString(bk->getRating())+"</td><td ><b> Book Format: </b>"+QString::fromStdString(bk->getBookFormat())+"</td></tr><tr><td ><b> Number od Pages: </b>"+QString::number(bk->getePages())+"</td><td ><b> publish Date: </b>"+QString::fromStdString(bk->getPublishDate())+"</td></tr><tr><td ><b> Language: </b>"+QString::fromStdString(bk->getLanguage())+"</td><td ><b> Price: </b>$"+QString::number(bk->getPrice())+"</td></tr></table>";
+            int bookType=index.data( Qt::UserRole+2).toInt();
+            qDebug()<<bookID<<"-"<<bookType;
+
+            QString str;
+            QString ur;
+            if(bookType==0)
+            {
+                BooksFactory b(0);
+                Book* bk = b.getBooks()->getBookDetails(bookID);
+                    str="<table  cellpadding=\"3\" border=\"0\" style=\"font-size:14px\"  ><tr><td width=\"250\" ><b> Title: </b> "+QString::fromStdString(bk->getTitle())+"</td><td width=\"250\" ><b> Author: </b>"+QString::fromStdString(bk->getAuthor())+"</td></tr><tr><td ><b> Publisher: </b>"+QString::fromStdString(bk->getPublisher())+"</td><td ><b> ISBN: </b>"+QString::fromStdString(bk->getIsbn())+"</td></tr><tr><td ><b> Rating: </b>"+QString::fromStdString(bk->getRating())+"</td><td ><b> Book Format: </b>"+QString::fromStdString(bk->getBookFormat())+"</td></tr><tr><td ><b> Number od Pages: </b>"+QString::number(bk->getePages())+"</td><td ><b> publish Date: </b>"+QString::fromStdString(bk->getPublishDate())+"</td></tr><tr><td ><b> Language: </b>"+QString::fromStdString(bk->getLanguage())+"</td><td ><b> Price: </b>$"+QString::number(bk->getPrice())+"</td></tr></table>";
+                    ur = QString::fromStdString(bk->getCoverImg());
+
+                    ui->genre->setText("<b>Genre: </b>"+QString::fromStdString(bk->getGenres()));
+                    ui->genre->setWordWrap(true);
+
+                    ui->desc->setText(QString::fromStdString(bk->getDescription()));
+                    ui->desc->setWordWrap(true);
+                     ui->scrollArea->resize(851,161);
+            }
+            else if(bookType==1)
+            {
+                BooksFactory b2(1);
+                Book* bk2 = b2.getBooks()->getBookDetails(bookID);
+                    str="<table  cellpadding=\"3\" border=\"0\" style=\"font-size:14px\"  ><tr><td  ><b> Title: </b> "+QString::fromStdString(bk2->getTitle())+"</td></tr><tr><td ><b> Publisher: </b>"+QString::fromStdString(bk2->getPublisher())+"</td></tr><tr><td ><b> ISBN: </b>"+QString::fromStdString(bk2->getIsbn())+"</td></tr><tr><td ><b> Rating: </b>"+QString::fromStdString(bk2->getRating())+"</td></tr><tr><td ><b> Book Format: </b>"+QString::fromStdString(bk2->getBookFormat())+"</td></tr><tr><td ><b> Number od Pages: </b>"+QString::number(bk2->getePages())+"</td></tr><tr><td ><b> Language: </b>"+QString::fromStdString(bk2->getLanguage())+"</td></tr><tr><td ><b> Price: </b>$"+QString::number(bk2->getPrice())+"</td></tr></table>";
+
+                    ur = QString::fromStdString(bk2->getCoverImg());
+                    ui->genre->setText("");
+                    ui->genre->setWordWrap(true);
+
+                     ui->desc->setText("");
+                    ui->desc->setWordWrap(true);
+                    ui->scrollArea->resize(851,250);
+            }
 
             QNetworkAccessManager *nam = new QNetworkAccessManager(this);
             connect(nam, &QNetworkAccessManager::finished, this, &DisplayBooks::downloadFinished);
-            const QUrl url = QUrl(QString::fromStdString(bk->getCoverImg()));
+            const QUrl url = QUrl(ur);
             QNetworkRequest request(url);
             nam->get(request);
 
@@ -91,13 +146,9 @@ void DisplayBooks::onTableClicked(const QModelIndex &index)
             formLayout1->addRow(hBoxLayout1);
             ui->scrollArea->setWidget(container1);
 
+
             container1->setLayout(formLayout1);
 
-            ui->genre->setText("<b>Genre: </b>"+QString::fromStdString(bk->getGenres()));
-            ui->genre->setWordWrap(true);
-
-            ui->desc->setText(QString::fromStdString(bk->getDescription()));
-            ui->desc->setWordWrap(true);
 
 
         }

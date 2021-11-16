@@ -1,6 +1,7 @@
 #ifndef BOOKSFACTORY_H
 #define BOOKSFACTORY_H
 #include"TextBook.h"
+#include"RefBook.h"
 
 
 
@@ -15,6 +16,12 @@ public:
         {
 
             factPtr = new TextBook();
+        }
+
+        if(bookType==1)
+        {
+
+            factPtr = new RefBook();
         }
 
         return factPtr ;
