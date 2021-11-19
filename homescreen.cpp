@@ -23,16 +23,6 @@ homeScreen::homeScreen(QWidget *parent)
     createDynamicButton();
     createLibrarianLoginButton();
     createListBooks();
-
-
-//    QSqlQuery query;
-
-
-//    query.exec("SELECT * FROM books");
-//    while(query.next())
-//    {
-//        std::cout<< query.value("title").toString().toStdString()<<std::endl;
-//    }
 }
 
 homeScreen::~homeScreen()
@@ -164,7 +154,6 @@ void homeScreen::createHeadingLabel()
     QScreen *screen = QGuiApplication::primaryScreen();
     QRect screenGeometry = screen->geometry();
     int x = (.9 * screenGeometry.width() - ui->headingLabel->width () / 2);
-    int y = (.9 * screenGeometry.height() - ui->headingLabel->height () / 2);
     //start instantiation of dynamic button
     ui->headingLabel->setGeometry(x - 1000, 100, 850, 75);
 }
@@ -218,15 +207,17 @@ void homeScreen::on_dynamicButton_clicked()
         QString username = ui->usernameEdit->text();
         QString password = ui->passwordEdit->text();
          query.prepare("INSERT INTO users ("
-                                        "firstname, "
-                                        "lastname, "
+                                        "fName, "
+                                        "lName, "
                                         "username, "
-                                        "password) "
-                                        "VALUES (?, ?, ?, ?);");
+                                        "password, "
+                                        "userType) "
+                                        "VALUES (?, ?, ?, ?, ?);");
            query.addBindValue(firstname);
            query.addBindValue(lastname);
            query.addBindValue(username);
            query.addBindValue(password);
+            query.addBindValue("STUDENT");
             if (!query.exec())
             {
                 qDebug() << query.lastError();
