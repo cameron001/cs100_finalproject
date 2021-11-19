@@ -9,6 +9,7 @@ DisplayBooks::DisplayBooks(QWidget *parent) :
 {
 
     ui->setupUi(this);
+    centerAndResize();
 
     connect( ui->booksDataSet, SIGNAL(clicked(const QModelIndex &)), this, SLOT(onTableClicked(const QModelIndex &)));
     ui->booksDataSet->horizontalHeader()->setStretchLastSection(true);
@@ -23,6 +24,18 @@ DisplayBooks::DisplayBooks(QWidget *parent) :
 DisplayBooks::~DisplayBooks()
 {
     delete ui;
+}
+
+void DisplayBooks::centerAndResize()
+{
+    QScreen *screen = QGuiApplication::primaryScreen();
+    QRect screenGeometry = screen->geometry();
+    int height = screenGeometry.height() * 9;
+    int width = screenGeometry.width() * 9;
+    //    //Grab screen size for this computer
+    QSize newSize(width, height);
+    setGeometry(0, 0, height, width);
+    //    //Set Screensize
 }
 
 
@@ -45,10 +58,14 @@ void DisplayBooks::populateDataSet()
     model->setHorizontalHeaderItem( 1,new QStandardItem("Book Title"));
     model->setHorizontalHeaderItem( 2,new QStandardItem("Author"));
     model->setHorizontalHeaderItem( 3,new QStandardItem("Publisher"));
-    ui->booksDataSet->setColumnWidth(0, this->width()/4);
-    ui->booksDataSet->setColumnWidth(1, this->width()/4);
-    ui->booksDataSet->setColumnWidth(2, this->width()/4);
-    ui->booksDataSet->setColumnWidth(3, this->width()/4);
+    //ui->booksDataSet->setColumnWidth(0, this->width()/4);
+    //ui->booksDataSet->setColumnWidth(1, this->width()/4);
+    //ui->booksDataSet->setColumnWidth(2, this->width()/4);
+    //ui->booksDataSet->setColumnWidth(3, this->width()/4);
+    for(int i = 0; i < 5; i++)
+    {
+        ui->booksDataSet->setColumnWidth(i, 300);
+    }
 
 
     for (auto& book_ptr : tBooks)
