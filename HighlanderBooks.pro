@@ -12,11 +12,14 @@ CONFIG += c++11
 
 SOURCES += \
     database.cpp \
+    deletebookpage.cpp \
     displaybooks.cpp \
     existinguserloginpage.cpp \
     homescreen.cpp \
+    librarianaccountpage.cpp \
     librarianlogin.cpp \
     main.cpp \
+    studentaccountinfopage.cpp \
     studentaccountpage.cpp \
     user.cpp
 
@@ -25,18 +28,24 @@ HEADERS += \
     book.h \
     booksfactory.h \
     database.h \
+    deletebookpage.h \
     displaybooks.h \
     existinguserloginpage.h \
     homescreen.h \
+    librarianaccountpage.h \
     librarianlogin.h \
+    studentaccountinfopage.h \
     studentaccountpage.h \
     user.h
 
 FORMS += \
+    deletebookpage.ui \
     displaybooks.ui \
     existinguserloginpage.ui \
     homescreen.ui \
+    librarianaccountpage.ui \
     librarianlogin.ui \
+    studentaccountinfopage.ui \
     studentaccountpage.ui
 
 TRANSLATIONS += \

@@ -75,6 +75,7 @@ private slots:
 private:
     Ui::existingUserLoginPage *ui;
     QSqlQuery query;
+    QVector<user> userVector;
 };
 
 #endif // EXISTINGUSERLOGINPAGE_H
