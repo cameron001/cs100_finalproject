@@ -18,6 +18,7 @@
 #include <QSqlTableModel>
 #include <QMap>
 #include <QMessageBox>
+#include <QVector>
 
 #include "user.h"
 
@@ -39,7 +40,6 @@ public:
      user* login(QString username, QString password);
 
 
-
 private:
     /**
      * @brief Class constructor
@@ -48,6 +48,7 @@ private:
      */
     Database();
     static Database* instance;
+    Database *db;
 
     QSqlQuery query;
     QMap<QString, QMap<QString, user*> > userDbCacheLogin;
