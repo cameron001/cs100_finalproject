@@ -95,3 +95,12 @@ void librarianLogin::createLoginButton()
     int y = (.9 * screenGeometry.height() - ui->loginButton->height ()) / 2;
     ui->loginButton->setGeometry(x + 60, y + 180, 100, 25);
 }
+
+void librarianLogin::on_loginButton_clicked()
+{
+    Database *db = Database::getInstance();
+    QString username = ui->usernameEdit->text();
+    QString password = ui->passwordEdit->text();
+    db->librarianLogin(username, password);
+}
+

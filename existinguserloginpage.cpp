@@ -101,6 +101,5 @@ void existingUserLoginPage::on_loginButton_clicked()
     QString username = ui->usernameEdit->text();
     QString password = ui->passwordEdit->text();
     db->login(username, password);
-    //this->hide();
 }
 
