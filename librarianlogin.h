@@ -13,6 +13,8 @@
 #include <QLabel>
 #include <QPushButton>
 
+#include "librarianaccountpage.h"
+
 
 namespace Ui {
 class librarianLogin;
@@ -66,6 +68,9 @@ public:
             @date     11/10/2021
             */
           void createLoginButton();
+
+private slots:
+          void on_loginButton_clicked();
 
 private:
     Ui::librarianLogin *ui;

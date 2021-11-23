@@ -100,28 +100,6 @@ void existingUserLoginPage::on_loginButton_clicked()
     Database *db = Database::getInstance();
     QString username = ui->usernameEdit->text();
     QString password = ui->passwordEdit->text();
-    //db->login(username, password);
-    if (username == "blake" && password == "blah")
-    {
-        QMessageBox success;
-        success.setText("Success! Username and password is correct");
-        success.setIcon(QMessageBox::Warning);
-        success.setWindowTitle("Invalid user");
-        success.exec();
-        //open new page
-        studentAccountPage newLogin;
-        newLogin.setModal(true);
-        this->hide();
-        newLogin.show();
-        newLogin.exec();
-    }
-    else
-    {
-        QMessageBox error;
-        error.setText("Error! Username or password is incorrect");
-        error.setIcon(QMessageBox::Warning);
-        error.setWindowTitle("Invalid user");
-        error.exec();
-    }
+    db->login(username, password);
 }
 

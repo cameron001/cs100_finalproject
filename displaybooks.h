@@ -28,6 +28,8 @@ public:
 
     ~DisplayBooks();
 
+    void centerAndResize();
+
     void populateDataSet();
    //void resizeEvent(QResizeEvent *event);
 private slots:
