@@ -7,6 +7,7 @@
 #include "deletebookpage.h"
 #include "searchbyauthorpage.h"
 #include "searchbytitlepage.h"
+#include "addbookpage.h"
 
 namespace Ui {
 class librarianAccountPage;
@@ -42,6 +43,8 @@ private slots:
     void on_searchByAuthorButton_clicked();
 
     void on_searchByBookTitleButton_clicked();
+
+    void on_addBookButton_clicked();
 
 private:
     Ui::librarianAccountPage *ui;
