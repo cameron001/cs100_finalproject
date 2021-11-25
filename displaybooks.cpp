@@ -59,8 +59,9 @@ void DisplayBooks::populateDataSet()
              x->setData(book_ptr->getID(), Qt::UserRole+1);
              x->setData(book_ptr->getBookType(), Qt::UserRole+2);
              x->setText(QString::fromStdString(book_ptr->getIsbn()));
-qDebug()<<book_ptr->getID()<<"-"<<book_ptr->getBookType();
-                model->setItem(row,col,x);
+
+
+model->setItem(row,col,x);
 
                model->setItem(row,col+1,  new QStandardItem(QString::fromStdString(book_ptr->getTitle())));
                model->setItem(row,col+2,new QStandardItem(QString::fromStdString(book_ptr->getAuthor())));
@@ -78,7 +79,8 @@ qDebug()<<book_ptr->getID()<<"-"<<book_ptr->getBookType();
              x->setData(book_ptr2->getID(), Qt::UserRole+1);
              x->setData(book_ptr2->getBookType(), Qt::UserRole+2);
              x->setText(QString::fromStdString(book_ptr2->getIsbn()));
-qDebug()<<book_ptr2->getID()<<"-"<<book_ptr2->getBookType();
+
+
              model->setItem(row,col,x);
 
                model->setItem(row,col+1,  new QStandardItem(QString::fromStdString(book_ptr2->getTitle())));

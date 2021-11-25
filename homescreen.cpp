@@ -218,8 +218,8 @@ void homeScreen::on_dynamicButton_clicked()
         QString username = ui->usernameEdit->text();
         QString password = ui->passwordEdit->text();
          query.prepare("INSERT INTO users ("
-                                        "firstname, "
-                                        "lastname, "
+                                        "fName, "
+                                        "lName, "
                                         "username, "
                                         "password) "
                                         "VALUES (?, ?, ?, ?);");
@@ -227,6 +227,7 @@ void homeScreen::on_dynamicButton_clicked()
            query.addBindValue(lastname);
            query.addBindValue(username);
            query.addBindValue(password);
+           //query.exec();
             if (!query.exec())
             {
                 qDebug() << query.lastError();

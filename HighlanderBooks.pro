@@ -21,6 +21,7 @@ SOURCES += \
     user.cpp
 
 HEADERS += \
+    RefBook.h \
     TextBook.h \
     book.h \
     booksfactory.h \
