@@ -5,6 +5,8 @@
 
 #include "database.h"
 #include "addtextbook.h"
+#include "addrefbook.h"
+#include "addjournal.h"
 
 namespace Ui {
 class addBookPage;

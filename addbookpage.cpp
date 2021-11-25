@@ -68,5 +68,19 @@ void addBookPage::on_pushButton_clicked()
         newPage.show();
         newPage.exec();
     }
+    if(ui->lineEdit->text() == "Refbook" || ui->lineEdit->text() == "refbook")
+    {
+        addRefBook newPage;
+        newPage.setModal(true);
+        newPage.show();
+        newPage.exec();
+    }
+    if(ui->lineEdit->text() == "Journal" || ui->lineEdit->text() == "journal")
+    {
+        addJournal newPage;
+        newPage.setModal(true);
+        newPage.show();
+        newPage.exec();
+    }
 }
 

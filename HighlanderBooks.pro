@@ -12,10 +12,16 @@ CONFIG += c++11
 
 SOURCES += \
     addbookpage.cpp \
+    addjournal.cpp \
+    addrefbook.cpp \
     addtextbook.cpp \
     database.cpp \
     deletebookpage.cpp \
     displaybooks.cpp \
+    editbookpage.cpp \
+    editjournal.cpp \
+    editrefbook.cpp \
+    edittextbook.cpp \
     existinguserloginpage.cpp \
     homescreen.cpp \
     librarianaccountpage.cpp \
@@ -30,12 +36,18 @@ SOURCES += \
 HEADERS += \
     TextBook.h \
     addbookpage.h \
+    addjournal.h \
+    addrefbook.h \
     addtextbook.h \
     book.h \
     booksfactory.h \
     database.h \
     deletebookpage.h \
     displaybooks.h \
+    editbookpage.h \
+    editjournal.h \
+    editrefbook.h \
+    edittextbook.h \
     existinguserloginpage.h \
     homescreen.h \
     librarianaccountpage.h \
@@ -48,9 +60,15 @@ HEADERS += \
 
 FORMS += \
     addbookpage.ui \
+    addjournal.ui \
+    addrefbook.ui \
     addtextbook.ui \
     deletebookpage.ui \
     displaybooks.ui \
+    editbookpage.ui \
+    editjournal.ui \
+    editrefbook.ui \
+    edittextbook.ui \
     existinguserloginpage.ui \
     homescreen.ui \
     librarianaccountpage.ui \
