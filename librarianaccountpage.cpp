@@ -174,3 +174,12 @@ void librarianAccountPage::on_addBookButton_clicked()
     newPage.exec();
 }
 
+
+void librarianAccountPage::on_editBookButton_clicked()
+{
+    editBookPage newPage;
+    newPage.setModal(true);
+    newPage.show();
+    newPage.exec();
+}
+
