@@ -8,6 +8,8 @@
 #include "searchbyauthorpage.h"
 #include "searchbytitlepage.h"
 #include "searchbyisbnpage.h"
+#include "addbookpage.h"
+#include "editbookpage.h"
 
 namespace Ui {
 class librarianAccountPage;
