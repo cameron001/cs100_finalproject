@@ -48,7 +48,7 @@ void deleteBookPage::createAuthorEdit()
     QFont lastNameFont("Courier", 25, QFont::Bold);
     ui->authorEdit->setFont(lastNameFont);
     ui->authorEdit->setStyleSheet("color: black");
-    ui->authorEdit->setPlaceholderText("What is your password?");
+    ui->authorEdit->setPlaceholderText("What is the author?");
     ui->authorEdit->setEchoMode(QLineEdit::Password);
     //get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
