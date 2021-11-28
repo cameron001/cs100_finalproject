@@ -7,10 +7,7 @@
 #include "deletebookpage.h"
 #include "searchbyauthorpage.h"
 #include "searchbytitlepage.h"
-<<<<<<< HEAD
-
-=======
->>>>>>> master
+#include "searchbyisbnpage.h"
 #include "addbookpage.h"
 #include "editbookpage.h"
 
