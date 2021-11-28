@@ -31,16 +31,31 @@ public:
         Book * books= new RefBook();
         while(query.next())
         {
+
             books->setID(query.value("id").toInt());
+            books->setSeries(query.value("series").toString().toStdString());
             books->setTitle(query.value("title").toString().toStdString());
+            books->setAuthor(query.value("author").toString().toStdString());
             books->setRating(query.value("rating").toString().toStdString());
+            books->setDescription(query.value("description").toString().toStdString());
             books->setLanguage(query.value("language").toString().toStdString());
             books->setIsbn(query.value("isbn").toString().toStdString());
+            books->setGenres(query.value("genres").toString().toStdString());
             books->setNumRatings(query.value("numRatings").toInt());
+            books->setCharacters(query.value("characters").toString().toStdString());
             books->setBookFormat(query.value("bookFormat").toString().toStdString());
+            books->setEdition(query.value("edition").toString().toStdString());
             books->setePages(query.value("pages").toInt());
             books->setPublisher(query.value("publisher").toString().toStdString());
+            books->setPublishDate(query.value("publishDate").toString().toStdString());
+            books->setFirstPublishDate(query.value("firstPublishDate").toString().toStdString());
+            books->setAwards(query.value("awards").toString().toStdString());
+            books->setRatingsByStars(query.value("ratingsByStars").toString().toStdString());
+            books->setLikedPercent(query.value("likedPercent").toInt());
+            books->setSetting(query.value("setting").toString().toStdString());
             books->setCoverImg(query.value("coverImg").toString().toStdString());
+            books->setBbeScore(query.value("bbeScore").toInt());
+            books->setBbeVotes(query.value("bbeVotes").toInt());
             books->setPrice(query.value("price").toDouble());
         }
         return books;
@@ -54,15 +69,29 @@ public:
         {
             Book * books= new RefBook();
             books->setID(query.value("id").toInt());
+            books->setSeries(query.value("series").toString().toStdString());
             books->setTitle(query.value("title").toString().toStdString());
+            books->setAuthor(query.value("author").toString().toStdString());
             books->setRating(query.value("rating").toString().toStdString());
+            books->setDescription(query.value("description").toString().toStdString());
             books->setLanguage(query.value("language").toString().toStdString());
             books->setIsbn(query.value("isbn").toString().toStdString());
+            books->setGenres(query.value("genres").toString().toStdString());
             books->setNumRatings(query.value("numRatings").toInt());
+            books->setCharacters(query.value("characters").toString().toStdString());
             books->setBookFormat(query.value("bookFormat").toString().toStdString());
+            books->setEdition(query.value("edition").toString().toStdString());
             books->setePages(query.value("pages").toInt());
             books->setPublisher(query.value("publisher").toString().toStdString());
+            books->setPublishDate(query.value("publishDate").toString().toStdString());
+            books->setFirstPublishDate(query.value("firstPublishDate").toString().toStdString());
+            books->setAwards(query.value("awards").toString().toStdString());
+            books->setRatingsByStars(query.value("ratingsByStars").toString().toStdString());
+            books->setLikedPercent(query.value("likedPercent").toInt());
+            books->setSetting(query.value("setting").toString().toStdString());
             books->setCoverImg(query.value("coverImg").toString().toStdString());
+            books->setBbeScore(query.value("bbeScore").toInt());
+            books->setBbeVotes(query.value("bbeVotes").toInt());
             books->setPrice(query.value("price").toDouble());
 
             allBooks.push_back(books);
@@ -127,41 +156,6 @@ public:
     void setBbeVotes(int bvotes){}
     void setCoverImg(string cover){ coverImg=cover;}
      void setPrice(double pr){ price=pr;}
-
-     virtual int executeBookQuery(string sql)
-      {
-         QSqlQuery query;
-         return query.exec(QString::fromStdString(sql));
-
-      }
-
-
-     virtual vector<Book*> lookupBooks(string sql){
-         QSqlQuery query;
-         query.exec(QString::fromStdString(sql));
-         while(query.next())
-         {
-             Book * books= new RefBook();
-             books->setID(query.value("id").toInt());
-             books->setTitle(query.value("title").toString().toStdString());
-             books->setRating(query.value("rating").toString().toStdString());
-             books->setLanguage(query.value("language").toString().toStdString());
-             books->setIsbn(query.value("isbn").toString().toStdString());
-             books->setNumRatings(query.value("numRatings").toInt());
-             books->setBookFormat(query.value("bookFormat").toString().toStdString());
-             books->setePages(query.value("pages").toInt());
-             books->setPublisher(query.value("publisher").toString().toStdString());
-             books->setCoverImg(query.value("coverImg").toString().toStdString());
-             books->setPrice(query.value("price").toDouble());
-
-             allBooks.push_back(books);
-
-         }
-
-         return allBooks;
-
-     }
-
 
      ~RefBook(){
          for (int i = 0; i < allBooks.size(); ++i) {

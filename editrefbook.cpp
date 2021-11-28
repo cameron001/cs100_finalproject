@@ -1,8 +1,6 @@
 #include "editrefbook.h"
 #include "ui_editrefbook.h"
-#include "booksfactory.h"
 
-using namespace HighlanderBooks;
 editRefBook::editRefBook(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::editRefBook)
@@ -45,7 +43,7 @@ void editRefBook::createLineEdit1()
 {
     QFont lastNameFont("Courier", 10, QFont::Bold);
     ui->lineEdit->setFont(lastNameFont);
-    ui->lineEdit->setStyleSheet("color:#fff;");
+    ui->lineEdit->setStyleSheet("color: black");
     ui->lineEdit->setPlaceholderText("What is the book type?");
     //get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -73,7 +71,7 @@ void editRefBook::createLineEdit2()
 {
     QFont lastNameFont("Courier", 10, QFont::Bold);
     ui->lineEdit_2->setFont(lastNameFont);
-    ui->lineEdit_2->setStyleSheet("color:#fff;");
+    ui->lineEdit_2->setStyleSheet("color: black");
     ui->lineEdit_2->setPlaceholderText("What is the book title?");
     //get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -86,7 +84,7 @@ void editRefBook::createLineEdit3()
 {
     QFont lastNameFont("Courier", 10, QFont::Bold);
     ui->lineEdit_3->setFont(lastNameFont);
-    ui->lineEdit_3->setStyleSheet("color:#fff;");
+    ui->lineEdit_3->setStyleSheet("color: black");
     ui->lineEdit_3->setPlaceholderText("What is the book rating?");
     //get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -99,7 +97,7 @@ void editRefBook::createLineEdit4()
 {
     QFont lastNameFont("Courier", 10, QFont::Bold);
     ui->lineEdit_4->setFont(lastNameFont);
-    ui->lineEdit_4->setStyleSheet("color:#fff;");
+    ui->lineEdit_4->setStyleSheet("color: black");
     ui->lineEdit_4->setPlaceholderText("What is the language?");
     //get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -112,7 +110,7 @@ void editRefBook::createLineEdit5()
 {
     QFont lastNameFont("Courier", 10, QFont::Bold);
     ui->lineEdit_5->setFont(lastNameFont);
-    ui->lineEdit_5->setStyleSheet("color:#fff;");
+    ui->lineEdit_5->setStyleSheet("color: black");
     ui->lineEdit_5->setPlaceholderText("What is the isbn?");
     //get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -125,7 +123,7 @@ void editRefBook::createLineEdit6()
 {
     QFont lastNameFont("Courier", 10, QFont::Bold);
     ui->lineEdit_6->setFont(lastNameFont);
-    ui->lineEdit_6->setStyleSheet("color:#fff;");
+    ui->lineEdit_6->setStyleSheet("color: black");
     ui->lineEdit_6->setPlaceholderText("What is the number of ratings?");
     //get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -138,7 +136,7 @@ void editRefBook::createLineEdit7()
 {
     QFont lastNameFont("Courier", 10, QFont::Bold);
     ui->lineEdit_7->setFont(lastNameFont);
-    ui->lineEdit_7->setStyleSheet("color:#fff;");
+    ui->lineEdit_7->setStyleSheet("color: black");
     ui->lineEdit_7->setPlaceholderText("What is the book format?");
     //get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -151,7 +149,7 @@ void editRefBook::createLineEdit8()
 {
     QFont lastNameFont("Courier", 10, QFont::Bold);
     ui->lineEdit_8->setFont(lastNameFont);
-    ui->lineEdit_8->setStyleSheet("color:#fff;");
+    ui->lineEdit_8->setStyleSheet("color: black");
     ui->lineEdit_8->setPlaceholderText("How many pages?");
     //get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -164,7 +162,7 @@ void editRefBook::createLineEdit9()
 {
     QFont lastNameFont("Courier", 10, QFont::Bold);
     ui->lineEdit_9->setFont(lastNameFont);
-    ui->lineEdit_9->setStyleSheet("color:#fff;");
+    ui->lineEdit_9->setStyleSheet("color: black");
     ui->lineEdit_9->setPlaceholderText("Who is the publisher?");
     //get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -177,7 +175,7 @@ void editRefBook::createLineEdit10()
 {
     QFont lastNameFont("Courier", 10, QFont::Bold);
     ui->lineEdit_10->setFont(lastNameFont);
-    ui->lineEdit_10->setStyleSheet("color:#fff;");
+    ui->lineEdit_10->setStyleSheet("color: black");
     ui->lineEdit_10->setPlaceholderText("What is the books cover image?");
     //get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -190,7 +188,7 @@ void editRefBook::createLineEdit11()
 {
     QFont lastNameFont("Courier", 10, QFont::Bold);
     ui->lineEdit_11->setFont(lastNameFont);
-    ui->lineEdit_11->setStyleSheet("color:#fff;");
+    ui->lineEdit_11->setStyleSheet("color: black");
     ui->lineEdit_11->setPlaceholderText("Who are the book's price?");
     //get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -204,7 +202,7 @@ void editRefBook::createLineEdit12()
 {
     QFont lastNameFont("Courier", 10, QFont::Bold);
     ui->lineEdit_12->setFont(lastNameFont);
-    ui->lineEdit_12->setStyleSheet("color:#fff;");
+    ui->lineEdit_12->setStyleSheet("color: black");
     ui->lineEdit_12->setPlaceholderText("What is the ID?");
     //get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -216,35 +214,44 @@ void editRefBook::createLineEdit12()
 
 void editRefBook::on_pushButton_clicked()
 {
+    int bookType = ui->lineEdit->text().toInt();
+    QString title = ui->lineEdit_2->text();
+    QString rating = ui->lineEdit_3->text();
+    QString language = ui->lineEdit_4->text();
+    QString isbn = ui->lineEdit_5->text();
+    int numRatings = ui->lineEdit_6->text().toInt();
+    QString  bookFormat = ui->lineEdit_7->text();
+    int pages = ui->lineEdit_8->text().toInt();
+    QString publisher = ui->lineEdit_9->text();
+    QString cvrImg = ui->lineEdit_10->text();
+    QString price = ui->lineEdit_11->text();
+    int id = ui->lineEdit_12->text().toInt();
+    QSqlQuery query;
+    query.prepare("UPDATE books SET book_type = ?, title = ?, rating = ?, language = ?, isbn = ?, numRatings = ?, bookFormat = ?, pages = ?, publisher = ?, coverImg = ?, price = ? WHERE id = ? ");
+    query.addBindValue(bookType);
+    query.addBindValue(title);
+    query.addBindValue(rating);
+    query.addBindValue(language);
+    query.addBindValue(isbn);
+    query.addBindValue(numRatings);
+    query.addBindValue(bookFormat);
+    query.addBindValue(pages);
+    query.addBindValue(publisher);
+    query.addBindValue(cvrImg);
+    query.addBindValue(price);
+    query.addBindValue(id);
 
-    string id = ui->lineEdit_12->text().toStdString();
-    string bookType = ui->lineEdit->text().toStdString();
-    string title = ui->lineEdit_2->text().toStdString();
-    string rating = ui->lineEdit_3->text().toStdString();
-    string language = ui->lineEdit_4->text().toStdString();
-    string isbn = ui->lineEdit_5->text().toStdString();
-    string numRatings = ui->lineEdit_6->text().toStdString();
-    string  bookFormat = ui->lineEdit_7->text().toStdString();
-    string pages = ui->lineEdit_8->text().toStdString();
-    string publisher = ui->lineEdit_9->text().toStdString();
-    string cvrImg = ui->lineEdit_10->text().toStdString();
-    string price = ui->lineEdit_11->text().toStdString();
-
-    map<string, string> bookQuery;
-    bookQuery.insert(pair<string, string>("book_type","1" ));
-    bookQuery.insert(pair<string, string>("id",id));
-    bookQuery.insert(pair<string, string>("title", title));
-    bookQuery.insert(pair<string, string>("rating", rating));
-    bookQuery.insert(pair<string, string>("language",language ));
-    bookQuery.insert(pair<string, string>("isbn", isbn));
-    bookQuery.insert(pair<string, string>("numRatings", numRatings));
-    bookQuery.insert(pair<string, string>("bookFormat", bookFormat));
-    bookQuery.insert(pair<string, string>("pages", pages));
-    bookQuery.insert(pair<string, string>("publisher", publisher));
-    bookQuery.insert(pair<string, string>("coverImg",cvrImg ));
-    bookQuery.insert(pair<string, string>("price",price ));
-    BooksFactory b;
-   int count = b.UpdateBook(bookQuery);
+    if (!query.exec())
+    {
+        qDebug() << query.lastError();
+    }
+    else
+    {
+        int count = 0;
+        while (query.next())
+        {
+            count++;
+        }
         if (count == 1)
         {
             QMessageBox success;
@@ -267,5 +274,5 @@ void editRefBook::on_pushButton_clicked()
             success.setWindowTitle("Book Not Found");
             success.exec();
         }
-
+    }
 }
