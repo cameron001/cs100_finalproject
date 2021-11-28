@@ -13,6 +13,8 @@
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 #include <QNetworkReply>
+#include <QStandardItemModel>
+#include <QMainWindow>
 using namespace HighlanderBooks;
 
 namespace Ui {
@@ -29,14 +31,29 @@ public:
     ~DisplayBooks();
 
     void centerAndResize();
-
+    void tblViewHeader();
+    void getTextbooks();
+    void getRefbooks();
+    void getJournalbooks();
     void populateDataSet();
-   //void resizeEvent(QResizeEvent *event);
+    void clearBookDetails();
+
+
 private slots:
     void onTableClicked(const QModelIndex &);
     void downloadFinished(QNetworkReply *reply);
+    void showAll();
+    void showText();
+    void showRef();
+    void showJournals();
+    void on_search_btn_clicked();
+
+    void on_checkout_clicked();
+
 private:
     Ui::DisplayBooks *ui;
+    QStandardItemModel * model;
+    QVariant current;
 };
 
 #endif // DISPLAYBOOKS_H
