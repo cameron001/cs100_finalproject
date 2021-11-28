@@ -28,14 +28,13 @@ addRefBook::~addRefBook()
 
 void addRefBook::centerAndResize()
 {
-    QScreen *screen = QGuiApplication::primaryScreen();
-    QRect screenGeometry = screen->geometry();
-    int height = screenGeometry.height() * 9;
-    int width = screenGeometry.width() * 9;
-    //    //Grab screen size for this computer
-    QSize newSize(width, height);
-    setGeometry(0, 0, height, width);
-    //    //Set Screensize
+
+   QSize rec = QApplication::primaryScreen()->size();
+    int height = rec.height();
+    int width = rec.width();
+    this->setGeometry(0,0,width,height);
+
+
 }
 
 void addRefBook::createLineEdit1()
