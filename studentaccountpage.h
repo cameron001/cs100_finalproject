@@ -14,6 +14,7 @@
 #include <QLabel>
 #include <QPushButton>
 #include "database.h"
+#include "displaybooks.h"
 
 namespace Ui {
 class studentAccountPage;
@@ -36,6 +37,19 @@ public:
           void centerAndResize();
 
           void createWelcomeLabel();
+
+          void createAccountInfoButton();
+
+          void createLibraryBooksButton();
+
+          void createTransactionButton();
+
+          void createAccountDebtButton();
+
+private slots:
+          void on_accountInfoButton_clicked();
+
+          void on_libraryBooksButton_clicked();
 
 private:
     Ui::studentAccountPage *ui;

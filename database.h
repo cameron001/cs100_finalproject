@@ -18,8 +18,10 @@
 #include <QSqlTableModel>
 #include <QMap>
 #include <QMessageBox>
-
+#include <QVector>
+#include <QScreen>
 #include "user.h"
+#include "librarianaccountpage.h"
 
 
 class user;
@@ -38,6 +40,7 @@ public:
 
      user* login(QString username, QString password);
 
+     user* librarianLogin(QString username, QString password);
 
 
 private:
@@ -48,9 +51,11 @@ private:
      */
     Database();
     static Database* instance;
+    Database *db;
 
     QSqlQuery query;
     QMap<QString, QMap<QString, user*> > userDbCacheLogin;
+    QMap<QString, QMap<QString, user*> > librarianDbCacheLogin;
 
     ~Database();
 

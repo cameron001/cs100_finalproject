@@ -11,33 +11,73 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    addbookpage.cpp \
+    addjournal.cpp \
+    addrefbook.cpp \
+    addtextbook.cpp \
     database.cpp \
+    deletebookpage.cpp \
     displaybooks.cpp \
+    editbookpage.cpp \
+    editjournal.cpp \
+    editrefbook.cpp \
+    edittextbook.cpp \
     existinguserloginpage.cpp \
     homescreen.cpp \
+    librarianaccountpage.cpp \
     librarianlogin.cpp \
     main.cpp \
+    searchbyauthorpage.cpp \
+    searchbytitlepage.cpp \
+    studentaccountinfopage.cpp \
     studentaccountpage.cpp \
     user.cpp
 
 HEADERS += \
     RefBook.h \
     TextBook.h \
+    addbookpage.h \
+    addjournal.h \
+    addrefbook.h \
+    addtextbook.h \
     book.h \
     booksfactory.h \
     database.h \
+    deletebookpage.h \
     displaybooks.h \
+    editbookpage.h \
+    editjournal.h \
+    editrefbook.h \
+    edittextbook.h \
     existinguserloginpage.h \
     homescreen.h \
+    journal.h \
+    librarianaccountpage.h \
     librarianlogin.h \
+    searchbyauthorpage.h \
+    searchbytitlepage.h \
+    studentaccountinfopage.h \
     studentaccountpage.h \
     user.h
 
 FORMS += \
+    addbookpage.ui \
+    addjournal.ui \
+    addrefbook.ui \
+    addtextbook.ui \
+    deletebookpage.ui \
     displaybooks.ui \
+    editbookpage.ui \
+    editjournal.ui \
+    editrefbook.ui \
+    edittextbook.ui \
     existinguserloginpage.ui \
     homescreen.ui \
+    librarianaccountpage.ui \
     librarianlogin.ui \
+    searchbyauthorpage.ui \
+    searchbytitlepage.ui \
+    studentaccountinfopage.ui \
     studentaccountpage.ui
 
 TRANSLATIONS += \
