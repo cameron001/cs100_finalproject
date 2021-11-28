@@ -1,8 +1,5 @@
 #include "addjournal.h"
 #include "ui_addjournal.h"
-#include <booksfactory.h>
-
-using namespace HighlanderBooks;
 
 addJournal::addJournal(QWidget *parent) :
     QDialog(parent),
@@ -40,8 +37,8 @@ void addJournal::createLineEdit1()
 {
     QFont lastNameFont("Courier", 10, QFont::Bold);
     ui->lineEdit->setFont(lastNameFont);
-    ui->lineEdit->setStyleSheet("color:#fff;");
-    ui->lineEdit->setPlaceholderText("Book Cover image");
+    ui->lineEdit->setStyleSheet("color: black");
+    ui->lineEdit->setPlaceholderText("What is the book type?");
     //get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
     QRect screenGeometry = screen->geometry();
@@ -54,7 +51,7 @@ void addJournal::createLineEdit2()
 {
     QFont lastNameFont("Courier", 10, QFont::Bold);
     ui->lineEdit_2->setFont(lastNameFont);
-    ui->lineEdit_2->setStyleSheet("color:#fff;");
+    ui->lineEdit_2->setStyleSheet("color: black");
     ui->lineEdit_2->setPlaceholderText("What is the publisher?");
     //get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -68,7 +65,7 @@ void addJournal::createLineEdit3()
 {
     QFont lastNameFont("Courier", 10, QFont::Bold);
     ui->lineEdit_3->setFont(lastNameFont);
-    ui->lineEdit_3->setStyleSheet("color:#fff;");
+    ui->lineEdit_3->setStyleSheet("color: black");
     ui->lineEdit_3->setPlaceholderText("What is the first published date?");
     //get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -82,7 +79,7 @@ void addJournal::createLineEdit4()
 {
     QFont lastNameFont("Courier", 10, QFont::Bold);
     ui->lineEdit_4->setFont(lastNameFont);
-    ui->lineEdit_4->setStyleSheet("color:#fff;");
+    ui->lineEdit_4->setStyleSheet("color: black");
     ui->lineEdit_4->setPlaceholderText("What is the number of pages?");
     //get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -96,7 +93,7 @@ void addJournal::createLineEdit5()
 {
     QFont lastNameFont("Courier", 10, QFont::Bold);
     ui->lineEdit_5->setFont(lastNameFont);
-    ui->lineEdit_5->setStyleSheet("color:#fff;");
+    ui->lineEdit_5->setStyleSheet("color: black");
     ui->lineEdit_5->setPlaceholderText("What is the isbn?");
     //get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -110,7 +107,7 @@ void addJournal::createLineEdit6()
 {
     QFont lastNameFont("Courier", 10, QFont::Bold);
     ui->lineEdit_6->setFont(lastNameFont);
-    ui->lineEdit_6->setStyleSheet("color:#fff;");
+    ui->lineEdit_6->setStyleSheet("color: black");
     ui->lineEdit_6->setPlaceholderText("What is the price?");
     //get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -138,25 +135,38 @@ void addJournal::createButton()
 
 void addJournal::on_pushButton_clicked()
 {
-
-
-    string publisher = ui->lineEdit_2->text().toStdString();
-    string publishedDate = ui->lineEdit_3->text().toStdString();
-    string numPages = ui->lineEdit_4->text().toStdString();
-    string isbn = ui->lineEdit_5->text().toStdString();
-    string price = ui->lineEdit_6->text().toStdString();
-    string cvrImg = ui->lineEdit->text().toStdString();
-
-
-    map<string, string> bookQuery;
-    bookQuery.insert(pair<string, string>("book_type","2" ));
-    bookQuery.insert(pair<string, string>("isbn", isbn));
-    bookQuery.insert(pair<string, string>("publisher", publisher));
-    bookQuery.insert(pair<string, string>("coverImg",cvrImg ));
-    bookQuery.insert(pair<string, string>("price",price ));
-    bookQuery.insert(pair<string, string>("publishDate",publishedDate ));
-    BooksFactory b;
-   int count = b.CreateBook(bookQuery);
+    int bookType = ui->lineEdit->text().toInt();
+    QString publisher = ui->lineEdit_2->text();
+    QString firstPublishedDate = ui->lineEdit_3->text();
+    int numPages = ui->lineEdit_4->text().toInt();
+    QString isbn = ui->lineEdit_5->text();
+    QString price = ui->lineEdit_6->text();
+    QSqlQuery query;
+    query.prepare("INSERT INTO books ( "
+                  "book_type, "
+                  "publisher, "
+                  "firstPublishDate, "
+                  "pages, "
+                  "isbn, "
+                  "price) "
+                  "VALUES (?, ?, ?, ?, ?, ?);");
+    query.addBindValue(bookType);
+    query.addBindValue(publisher);
+    query.addBindValue(firstPublishedDate);
+    query.addBindValue(numPages);
+    query.addBindValue(isbn);
+    query.addBindValue(price);
+    if (!query.exec())
+    {
+        qDebug() << query.lastError();
+    }
+    else
+    {
+        int count = 0;
+        while (query.next())
+        {
+            count++;
+        }
         if (count == 1)
         {
             QMessageBox success;
@@ -179,6 +189,6 @@ void addJournal::on_pushButton_clicked()
             success.setWindowTitle("Book Not Found");
             success.exec();
         }
-
+    }
 }
 
