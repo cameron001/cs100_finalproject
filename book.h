@@ -44,9 +44,6 @@ public:
     virtual int getBbeVotes()=0;
     virtual string getCoverImg()=0;
     virtual double getPrice()=0;
-    virtual int executeBookQuery(string sql)=0;
-    virtual vector<Book*> lookupBooks(string sql)=0;
-
     virtual ~Book()=default;
 
 
