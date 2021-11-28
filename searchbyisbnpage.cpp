@@ -54,6 +54,14 @@ void searchByISBNPage::createEdit()
     ui->lineEdit->setGeometry(x - 150, y, 500, 35);
 }
 
+
+
+
+//
+//searches for the right isbn from the database when the button is clicked to search for it.
+//
+
+
 void searchByISBNPage::on_pushButton_clicked()
 {
     ui->tableView->show();
@@ -61,8 +69,12 @@ void searchByISBNPage::on_pushButton_clicked()
     ui->pushButton->hide();
     QSqlQuery query;
     QString isbn = ui->lineEdit->text();
+
+
     query.prepare("SELECT * FROM books WHERE isbn = ?  ");
     query.addBindValue(isbn);
+
+
     if (!query.exec())
     {
         qDebug() << query.lastError();
@@ -70,12 +82,15 @@ void searchByISBNPage::on_pushButton_clicked()
     else
     {
         int count = 0;
+
         while(query.next())
         {
             count++;
             QString isbn = query.value(4).toString();
         }
+
         QSqlQueryModel *search = new QSqlTableModel;
+
         search->setQuery(query);
         ui->tableView->setGeometry(0, 300, 1475, 100);
         ui->tableView->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContentsOnFirstShow);
@@ -102,10 +117,12 @@ void searchByISBNPage::on_pushButton_clicked()
         ui->tableView->setColumnHidden(24, true);
         ui->tableView->setColumnHidden(25, true);
         ui->tableView->setColumnHidden(26, true);
+
         for(int i = 0; i < 26; i++)
         {
             ui->tableView->setColumnWidth(i,250);
         }
+
         if (count < 1)
         {
             ui->tableView->hide();
