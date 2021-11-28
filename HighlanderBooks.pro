@@ -20,6 +20,7 @@ SOURCES += \
     librarianlogin.cpp \
     main.cpp \
     searchbyauthorpage.cpp \
+    searchbyisbnpage.cpp \
     searchbytitlepage.cpp \
     studentaccountinfopage.cpp \
     studentaccountpage.cpp \
@@ -37,6 +38,7 @@ HEADERS += \
     librarianaccountpage.h \
     librarianlogin.h \
     searchbyauthorpage.h \
+    searchbyisbnpage.h \
     searchbytitlepage.h \
     studentaccountinfopage.h \
     studentaccountpage.h \
@@ -50,6 +52,7 @@ FORMS += \
     librarianaccountpage.ui \
     librarianlogin.ui \
     searchbyauthorpage.ui \
+    searchbyisbnpage.ui \
     searchbytitlepage.ui \
     studentaccountinfopage.ui \
     studentaccountpage.ui

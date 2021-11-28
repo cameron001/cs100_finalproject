@@ -7,6 +7,7 @@
 #include "deletebookpage.h"
 #include "searchbyauthorpage.h"
 #include "searchbytitlepage.h"
+#include "searchbyisbnpage.h"
 
 namespace Ui {
 class librarianAccountPage;
@@ -32,6 +33,8 @@ public:
 
     void createSearchByAuthorButton();
 
+    void createSearchByISBNButton();
+
     void createSearchByBookTitleButton();
 
     void createDisplayBooksButton();
@@ -40,6 +43,8 @@ private slots:
     void on_deleteBookButton_clicked();
 
     void on_searchByAuthorButton_clicked();
+
+    void on_searchByISBNButton_clicked();
 
     void on_searchByBookTitleButton_clicked();
 
