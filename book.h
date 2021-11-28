@@ -4,7 +4,6 @@
 #include<string>
 #include"database.h"
 #include<iostream>
-#include <QString>
 using namespace std;
 
 namespace HighlanderBooks  {

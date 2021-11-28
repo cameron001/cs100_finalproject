@@ -165,21 +165,3 @@ void librarianAccountPage::on_searchByBookTitleButton_clicked()
     newPage.exec();
 }
 
-
-void librarianAccountPage::on_addBookButton_clicked()
-{
-    addBookPage newPage;
-    newPage.setModal(true);
-    newPage.show();
-    newPage.exec();
-}
-
-
-void librarianAccountPage::on_editBookButton_clicked()
-{
-    editBookPage newPage;
-    newPage.setModal(true);
-    newPage.show();
-    newPage.exec();
-}
-
