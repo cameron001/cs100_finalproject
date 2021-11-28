@@ -14,7 +14,7 @@
 #include <QPushButton>
 
 #include "librarianaccountpage.h"
-
+using namespace HighlanderBooks;
 
 namespace Ui {
 class librarianLogin;
@@ -68,12 +68,14 @@ public:
             @date     11/10/2021
             */
           void createLoginButton();
+          HighlanderBooks::user* login(QString username, QString password);
 
 private slots:
           void on_loginButton_clicked();
 
 private:
     Ui::librarianLogin *ui;
+    QMap<QString, QMap<QString, HighlanderBooks::user*> > librarianDbCacheLogin;
 };
 
 #endif // LIBRARIANLOGIN_H

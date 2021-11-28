@@ -100,6 +100,55 @@ void librarianLogin::on_loginButton_clicked()
     Database *db = Database::getInstance();
     QString username = ui->usernameEdit->text();
     QString password = ui->passwordEdit->text();
-    db->librarianLogin(username, password);
+    login(username, password);
 }
+HighlanderBooks::user* librarianLogin::login(QString username, QString password)
+{
+    QSqlQuery query;
+    query.prepare("SELECT * FROM users WHERE username = ? AND password = ? AND userType = ? ");
+    query.addBindValue(username);
+    query.addBindValue(password);
+    query.addBindValue("LIBRARIAN");
+    if (!query.exec())
+    {
+        qDebug() << query.lastError();
+    }
+    else
+    {
+        int count = 0;
+        while(query.next())
+        {
+            count++;
+            QString name = query.value(1).toString();
+            HighlanderBooks::user::userId =  query.value("id").toInt();
+            HighlanderBooks::user::firstName= query.value("fName").toString();
+            HighlanderBooks::user::studentID= query.value("studentID").toString();
+            HighlanderBooks::user::userType= query.value("userType").toString();
+            HighlanderBooks::user::isLibrarian=1;
+            QMessageBox success;
+            QFont userFont("Courier", 15, QFont::Bold);
+            success.setIcon(QMessageBox::Information);
+            success.setFont(userFont);
+            success.setText("Username and Password Correct! Welcome " + name);
+            success.setIcon(QMessageBox::Warning);
+            success.setWindowTitle("Invalid user");
+            success.exec();
+            //open new page
+            librarianAccountPage newLogin(this);
+            newLogin.setModal(true);
+            newLogin.show();
+            newLogin.exec();
+        }
+        if (count < 1)
+        {
+            QMessageBox error;
+            error.setText("Error! Username or password is incorrect");
+            error.setIcon(QMessageBox::Warning);
+            error.setWindowTitle("Invalid user");
+            error.exec();
+        }
+    }
+    return librarianDbCacheLogin[username][password];
+}
+
 

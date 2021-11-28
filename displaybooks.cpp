@@ -34,6 +34,7 @@ DisplayBooks::DisplayBooks(QWidget *parent) :
     ui->desc->setAlignment(Qt::AlignTop);
     ui->radio_all->setChecked(true);
     ui->booksDataSet->setModel(model);
+    ui->welcome_lbl->setText("Welcome, "+HighlanderBooks::user::firstName);
     populateDataSet();
 
     connect(ui->radio_all,SIGNAL(clicked()),this,SLOT(showAll()));
@@ -337,4 +338,7 @@ void DisplayBooks::on_checkout_clicked()
 {
     qDebug()<<current;
 }
+
+
+
 

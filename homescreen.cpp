@@ -22,7 +22,7 @@ homeScreen::homeScreen(QWidget *parent)
     createHeadingLabel();
     createDynamicButton();
     createLibrarianLoginButton();
-    createListBooks();
+
 }
 
 homeScreen::~homeScreen()
@@ -259,28 +259,10 @@ void homeScreen::on_librarianLoginButton_clicked()
 }
 
 
-void homeScreen::createListBooks()
-{
-    QFont userFont("Courier", 15, QFont::Bold);
-    ui->booksList->setFont(userFont);
-    ui->booksList->setText("List Textbooks");
-    ui->booksList->setStyleSheet("background-color: black");
-    //Get screen size to center label
-    QScreen *screen = QGuiApplication::primaryScreen();
-    QRect screenGeometry = screen->geometry();
-    int x = (.9 * screenGeometry.width() - ui->booksList->width ()) / 2;
-    int y = (.9 * screenGeometry.height() - ui->booksList->height ()) / 2;
-    ui->booksList->setGeometry(x - 100, y + 150, 400, 25);
-}
 
 
 
 
-void homeScreen::on_booksList_clicked()
-{
-    DisplayBooks newDisplayBook;
-    newDisplayBook.setModal(true);
-    newDisplayBook.show();
-    newDisplayBook.exec();
-}
+
+
 

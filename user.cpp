@@ -1,8 +1,15 @@
 #include "user.h"
+int HighlanderBooks::user::userId=0;
+QString HighlanderBooks::user::firstName="";
+QString HighlanderBooks::user::studentID="";
+QString HighlanderBooks::user::userType="";
+int HighlanderBooks::user::isLibrarian=0;
+
+namespace HighlanderBooks {
 
 user::user(QObject *parent) : QObject(parent) {}
 
-QString user::getFirstName() const
+QString user::getFirstName()
 {
     return firstName;
 }
@@ -22,7 +29,7 @@ QString user::getPassword() const
     return password;
 }
 
-int user::getUserId() const
+int user::getUserId()
 {
     return userId;
 }
@@ -51,4 +58,13 @@ void user::setPassword(const QString& value)
 void user::setUserId(int value)
 {
     userId = value;
+}
+
+QString user::getStudentID(){ return studentID;}
+QString user::getUserType(){return userType;}
+int user::getisLibrarian(){return isLibrarian;}
+
+void user::setStudentID(QString& value){studentID = value;}
+void user::setisLibrarian( int& value){isLibrarian=value;}
+void user::setUserType( QString& value){userType=value;}
 }

@@ -9,6 +9,7 @@
 #include "searchbytitlepage.h"
 #include "addbookpage.h"
 #include "editbookpage.h"
+#include "displaybooks.h"
 
 namespace Ui {
 class librarianAccountPage;
@@ -37,6 +38,8 @@ public:
     void createSearchByBookTitleButton();
 
     void createDisplayBooksButton();
+    void createLogoutbtn();
+
 
 private slots:
     void on_deleteBookButton_clicked();
@@ -49,8 +52,13 @@ private slots:
 
     void on_editBookButton_clicked();
 
+    void on_logout_clicked();
+
+    void on_displayBooksButton_clicked();
+
 private:
     Ui::librarianAccountPage *ui;
+    QWidget * dailog;
 };
 
 #endif // LIBRARIANACCOUNTPAGE_H

@@ -45,14 +45,18 @@ public:
           void createTransactionButton();
 
           void createAccountDebtButton();
+          void createLogoutButton();
 
 private slots:
           void on_accountInfoButton_clicked();
 
           void on_libraryBooksButton_clicked();
 
+          void on_logout_clicked();
+
 private:
     Ui::studentAccountPage *ui;
+    QWidget *dailog;
 };
 
 #endif // STUDENTACCOUNTPAGE_H
