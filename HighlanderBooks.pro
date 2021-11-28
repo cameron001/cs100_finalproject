@@ -34,7 +34,6 @@ SOURCES += \
     user.cpp
 
 HEADERS += \
-    RefBook.h \
     TextBook.h \
     addbookpage.h \
     addjournal.h \
@@ -51,7 +50,6 @@ HEADERS += \
     edittextbook.h \
     existinguserloginpage.h \
     homescreen.h \
-    journal.h \
     librarianaccountpage.h \
     librarianlogin.h \
     searchbyauthorpage.h \
