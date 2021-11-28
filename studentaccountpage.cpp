@@ -25,14 +25,13 @@ studentAccountPage::~studentAccountPage()
 
 void studentAccountPage::centerAndResize()
 {
-    // Grab screen size for this computer
-    QScreen *screen = QGuiApplication::primaryScreen();
-    QRect screenGeometry = screen->geometry();
-    int height = screenGeometry.height() * 9;
-    int width = screenGeometry.width() * 9;
-    //Set Screensize
-    QSize newSize(width, height);
-    setGeometry(0, 0, height, width);
+
+   QSize rec = QApplication::primaryScreen()->size();
+    int height = rec.height();
+    int width = rec.width();
+    this->setGeometry(0,0,width,height);
+
+
 }
 
 void studentAccountPage::createWelcomeLabel()

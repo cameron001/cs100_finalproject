@@ -7,7 +7,10 @@
 #include "deletebookpage.h"
 #include "searchbyauthorpage.h"
 #include "searchbytitlepage.h"
-#include "searchbyisbnpage.h"
+<<<<<<< HEAD
+
+=======
+>>>>>>> master
 #include "addbookpage.h"
 #include "editbookpage.h"
 
@@ -49,6 +52,10 @@ private slots:
     void on_searchByISBNButton_clicked();
 
     void on_searchByBookTitleButton_clicked();
+
+    void on_addBookButton_clicked();
+
+    void on_editBookButton_clicked();
 
 private:
     Ui::librarianAccountPage *ui;

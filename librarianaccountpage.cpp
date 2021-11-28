@@ -24,16 +24,14 @@ librarianAccountPage::~librarianAccountPage()
 
 void librarianAccountPage::centerAndResize()
 {
-    QScreen *screen = QGuiApplication::primaryScreen();
-    QRect screenGeometry = screen->geometry();
-    int height = screenGeometry.height() * 9;
-    int width = screenGeometry.width() * 9;
-    //    //Grab screen size for this computer
-    QSize newSize(width, height);
-    setGeometry(0, 0, height, width);
-    //    //Set Screensize
-}
 
+   QSize rec = QApplication::primaryScreen()->size();
+    int height = rec.height();
+    int width = rec.width();
+    this->setGeometry(0,0,width,height);
+
+
+}
 void librarianAccountPage::createWelcomeLabel()
 {
     QFont welcomeFont("Courier", 30, QFont::Bold);
@@ -183,6 +181,24 @@ void librarianAccountPage::on_searchByISBNButton_clicked()
 void librarianAccountPage::on_searchByBookTitleButton_clicked()
 {
     searchByTitlePage newPage;
+    newPage.setModal(true);
+    newPage.show();
+    newPage.exec();
+}
+
+
+void librarianAccountPage::on_addBookButton_clicked()
+{
+    addBookPage newPage;
+    newPage.setModal(true);
+    newPage.show();
+    newPage.exec();
+}
+
+
+void librarianAccountPage::on_editBookButton_clicked()
+{
+    editBookPage newPage;
     newPage.setModal(true);
     newPage.show();
     newPage.exec();
