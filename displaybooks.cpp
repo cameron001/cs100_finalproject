@@ -41,6 +41,7 @@ DisplayBooks::DisplayBooks(QWidget *parent) :
     connect(ui->radio_ref,SIGNAL(clicked()),this,SLOT(showRef()));
     connect(ui->radio_journal,SIGNAL(clicked()),this,SLOT(showJournals()));
 
+
     ui->booksDataSet->setStyleSheet(" QTableView::item { border-left: 1px solid #fff; border-bottom: 1px solid #fff;}");
 
 }
@@ -265,9 +266,12 @@ void DisplayBooks::clearBookDetails()
     ui->search_result_lbl->setText("");
     ui->desc->setText("");
     ui->genre->setText("");
-    QWidget *wid = ui->scrollArea->widget();
-    if(wid)
-        wid->deleteLater();
+
+    QWidget *w = ui->scrollArea->takeWidget();
+    delete w;
+
+ ui->scrollArea->ensureVisible(0, 0, 0, 0);
+
 //    QPixmap pm = ui->imgLbl->pixmap();
     QPixmap nPm;
     ui->imgLbl->setPixmap(nPm);
@@ -283,6 +287,7 @@ void DisplayBooks::on_search_btn_clicked()
     if(ui->radio_ISBN->isChecked()){column = "isbn";}
     else if(ui->radio_author->isChecked()){column = "author";}
     else if(ui->radio_genre->isChecked()){column = "genres";}
+    else if(ui->radio_title->isChecked()){column = "title";}
     if(!(column.empty() && ui->search_text->text().toStdString().empty()))
     {
        BooksFactory bf;
