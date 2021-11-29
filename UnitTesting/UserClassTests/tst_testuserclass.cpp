@@ -19,7 +19,7 @@ private slots:
 void testUserClass::test_case1_normal()
 {
 
-    user* testuser = new user();
+    HighlanderBooks::user* testuser = new HighlanderBooks::user();
 
     testuser->setFirstName("Paul");
     testuser->setLastName("McCartney");
@@ -50,7 +50,7 @@ void testUserClass::test_case1_normal()
 }
 void testUserClass::test_case2_leavingempty(){
 
-    user* testuser2 = new user();
+    HighlanderBooks::user* testuser2 = new HighlanderBooks::user();
 
     testuser2->setUserId(0);
 
@@ -62,7 +62,7 @@ void testUserClass::test_case2_leavingempty(){
 
 void testUserClass::test_case3_weirdinputs(){
 
-    user* testuser = new user();
+    HighlanderBooks::user* testuser = new HighlanderBooks::user();
 
     testuser->setFirstName("123");
     testuser->setLastName("\n");
