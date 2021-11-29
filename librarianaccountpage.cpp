@@ -15,6 +15,8 @@ librarianAccountPage::librarianAccountPage(QWidget *parent) :
      createSearchByBookTitleButton();
      createDisplayBooksButton();
      createEditBookButton();
+     createLogoutbtn();
+     dailog=parent;
 }
 
 librarianAccountPage::~librarianAccountPage()
@@ -38,13 +40,14 @@ void librarianAccountPage::createWelcomeLabel()
     ui->label->setFont(welcomeFont);
     ui->label->setAlignment(Qt::AlignCenter);
     ui->label->setStyleSheet("color: black");
-    ui->label->setText("Welcome!");
+    ui->label->setText("Welcome, "+HighlanderBooks::user::firstName);
+    ui->label->setAlignment(Qt::AlignmentFlag::AlignLeft);
     //get screen size
     QScreen *screen = QGuiApplication::primaryScreen();
     QRect screenGeometry = screen->geometry();
     int x = (.9 * screenGeometry.width() - ui->label->width ()) / 2;
     int y = (.9 * screenGeometry.height() - ui->label->height ()) / 2;
-    ui->label->setGeometry(x + 25, y - 300, 150, 50);
+    ui->label->setGeometry(x + 10, y - 300, 300, 50);
 }
 
 void librarianAccountPage::createAddBookButton()
@@ -199,6 +202,41 @@ void librarianAccountPage::on_addBookButton_clicked()
 void librarianAccountPage::on_editBookButton_clicked()
 {
     editBookPage newPage;
+    newPage.setModal(true);
+    newPage.show();
+    newPage.exec();
+}
+
+void librarianAccountPage::createLogoutbtn(){
+    //create font
+    QFont userFont("Courier", 15, QFont::Bold);
+    ui->logout->setFont(userFont);
+    ui->logout->setText("Logout");
+    ui->logout->setStyleSheet("background-color: black");
+    //Get screen size to center label
+    QScreen *screen = QGuiApplication::primaryScreen();
+    QRect screenGeometry = screen->geometry();
+    int x = (.9 * screenGeometry.width() - ui->logout->width ()) / 2;
+    int y = (.9 * screenGeometry.height() - ui->logout->height ()) / 2;
+    ui->logout->setGeometry(x + 10, y + 250, 200, 25);
+}
+
+
+void librarianAccountPage::on_logout_clicked()
+{
+    HighlanderBooks::user::userId=0;
+    HighlanderBooks::user::firstName="";
+    HighlanderBooks::user::userType="";
+    HighlanderBooks::user::isLibrarian=0;
+    HighlanderBooks::user::studentID="";
+    this->close();
+    dailog->close();
+}
+
+
+void librarianAccountPage::on_displayBooksButton_clicked()
+{
+   DisplayBooks newPage;
     newPage.setModal(true);
     newPage.show();
     newPage.exec();

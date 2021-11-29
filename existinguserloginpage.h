@@ -21,7 +21,7 @@
 
 #include "database.h"
 #include "studentaccountpage.h"
-
+using namespace HighlanderBooks;
 namespace Ui {
 class existingUserLoginPage;
 }
@@ -68,6 +68,7 @@ public:
        void createpasswordEdit();
 
        void createLoginButton();
+       HighlanderBooks::user* login(QString username, QString password);
 
 private slots:
        void on_loginButton_clicked();
@@ -75,7 +76,8 @@ private slots:
 private:
     Ui::existingUserLoginPage *ui;
     QSqlQuery query;
-    QVector<user> userVector;
+    QVector<HighlanderBooks::user> userVector;
+    QMap<QString, QMap<QString, HighlanderBooks::user*> > userDbCacheLogin;
 };
 
 #endif // EXISTINGUSERLOGINPAGE_H

@@ -5,11 +5,13 @@ searchByTitlePage::searchByTitlePage(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::searchByTitlePage)
 {
+
     ui->setupUi(this);
     ui->tableView->hide();
     centerAndResize();
     createButton();
     createEdit();
+
 }
 
 searchByTitlePage::~searchByTitlePage()

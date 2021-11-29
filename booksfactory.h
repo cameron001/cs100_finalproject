@@ -207,12 +207,15 @@ public:
                 booksPtrs.push_back(temp2);
            }
 
-            sql="select * from books where book_type=2 and lower("+col+") like \"%"+findMe+"%\"";
-           factPtr = new RefBook();
-           vector<Book *> temp3= factPtr->lookupBooks(sql);
-           if (temp3.size()>0)
-           {
-                booksPtrs.push_back(temp3);
+           if(col!="title")
+            {
+                sql="select * from books where book_type=2 and lower("+col+") like \"%"+findMe+"%\"";
+               factPtr = new RefBook();
+               vector<Book *> temp3= factPtr->lookupBooks(sql);
+               if (temp3.size()>0)
+               {
+                    booksPtrs.push_back(temp3);
+               }
            }
 
        }

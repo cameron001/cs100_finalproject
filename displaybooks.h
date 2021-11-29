@@ -50,6 +50,8 @@ private slots:
 
     void on_checkout_clicked();
 
+
+
 private:
     Ui::DisplayBooks *ui;
     QStandardItemModel * model;

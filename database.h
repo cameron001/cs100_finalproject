@@ -38,9 +38,7 @@ public:
      */
     static Database* getInstance();
 
-     user* login(QString username, QString password);
 
-     user* librarianLogin(QString username, QString password);
 
 
 private:
@@ -54,8 +52,8 @@ private:
     Database *db;
 
     QSqlQuery query;
-    QMap<QString, QMap<QString, user*> > userDbCacheLogin;
-    QMap<QString, QMap<QString, user*> > librarianDbCacheLogin;
+
+
 
     ~Database();
 

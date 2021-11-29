@@ -7,6 +7,7 @@ studentAccountPage::studentAccountPage(QWidget *parent) :
     ui(new Ui::studentAccountPage)
     //ui(new Ui::studentAccountPage)
 {
+    dailog = parent;
     ui->setupUi(this);
     centerAndResize();
     setStyleSheet("background-color: white");
@@ -15,6 +16,8 @@ studentAccountPage::studentAccountPage(QWidget *parent) :
     createAccountInfoButton();
     createLibraryBooksButton();
     createTransactionButton();
+    createLogoutButton();
+
     //createAccountInfoToolButton();
 }
 
@@ -95,6 +98,21 @@ void studentAccountPage::createTransactionButton()
     ui->transactionButton->setGeometry(x+ 10, y + 50, 200, 25);
 }
 
+void studentAccountPage::createLogoutButton()
+{
+    //create font
+    QFont userFont("Courier", 15, QFont::Bold);
+    ui->logout->setFont(userFont);
+    ui->logout->setText("Logout");
+    ui->logout->setStyleSheet("background-color: black");
+    //Get screen size to center label
+    QScreen *screen = QGuiApplication::primaryScreen();
+    QRect screenGeometry = screen->geometry();
+    int x = (.9 * screenGeometry.width() - ui->logout->width ()) / 2;
+    int y = (.9 * screenGeometry.height() - ui->logout->height ()) / 2;
+    ui->logout->setGeometry(x+ 10, y + 150, 200, 25);
+}
+
 void studentAccountPage::createAccountDebtButton()
 {
     //create font
@@ -128,5 +146,18 @@ void studentAccountPage::on_libraryBooksButton_clicked()
     newDisplayBook.setModal(true);
     newDisplayBook.show();
     newDisplayBook.exec();
+}
+
+
+void studentAccountPage::on_logout_clicked()
+{
+    HighlanderBooks::user::userId=0;
+    HighlanderBooks::user::firstName="";
+    HighlanderBooks::user::userType="";
+    HighlanderBooks::user::isLibrarian=0;
+    HighlanderBooks::user::studentID="";
+    this->close();
+    dailog->close();
+
 }
 
