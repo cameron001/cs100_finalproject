@@ -15,7 +15,9 @@ librarianAccountPage::librarianAccountPage(QWidget *parent) :
      createSearchByBookTitleButton();
      createDisplayBooksButton();
      createEditBookButton();
+     createSearchByISBNButton();
      createLogoutbtn();
+
      dailog=parent;
 }
 
@@ -184,6 +186,21 @@ void librarianAccountPage::on_editBookButton_clicked()
     newPage.exec();
 }
 
+void librarianAccountPage::createSearchByISBNButton()
+{
+    //create font
+    QFont userFont("Courier", 15, QFont::Bold);
+    ui->searchByISBNButton->setFont(userFont);
+    ui->searchByISBNButton->setText("Search By ISBN");
+    ui->searchByISBNButton->setStyleSheet("background-color: black");
+    //Get screen size to center label
+    QScreen *screen = QGuiApplication::primaryScreen();
+    QRect screenGeometry = screen->geometry();
+    int x = (.9 * screenGeometry.width() - ui->searchByISBNButton->width ()) / 2;
+    int y = (.9 * screenGeometry.height() - ui->searchByISBNButton->height ()) / 2;
+    ui->searchByISBNButton->setGeometry(x + 10, y + 250, 200, 25);
+}
+
 void librarianAccountPage::createLogoutbtn(){
     //create font
     QFont userFont("Courier", 15, QFont::Bold);
@@ -195,7 +212,15 @@ void librarianAccountPage::createLogoutbtn(){
     QRect screenGeometry = screen->geometry();
     int x = (.9 * screenGeometry.width() - ui->logout->width ()) / 2;
     int y = (.9 * screenGeometry.height() - ui->logout->height ()) / 2;
-    ui->logout->setGeometry(x + 10, y + 250, 200, 25);
+    ui->logout->setGeometry(x + 10, y + 300, 200, 25);
+}
+
+void librarianAccountPage::on_searchByISBNButton_clicked()
+{
+    searchByISBNPage newPage;
+    newPage.setModal(true);
+    newPage.show();
+    newPage.exec();
 }
 
 
@@ -209,6 +234,7 @@ void librarianAccountPage::on_logout_clicked()
     this->close();
     dailog->close();
 }
+
 
 
 void librarianAccountPage::on_displayBooksButton_clicked()

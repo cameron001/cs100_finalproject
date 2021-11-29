@@ -336,7 +336,18 @@ void DisplayBooks::on_search_btn_clicked()
 
 void DisplayBooks::on_checkout_clicked()
 {
-    qDebug()<<current;
+    QSqlQuery query;
+    query.exec("select * from ransactions where bookID="+current.toString()+" and userID="+QString::number( HighlanderBooks::user::userId)+" and bookReturned=0");
+    int notExist=0;
+    while(query.next())
+    {
+        notExist=1;
+    }
+    if(!notExist)
+    {
+       query.exec("insert into ransactions(bookID,userID) values ("+current.toString()+" , "+QString::number( HighlanderBooks::user::userId)+" )");
+    }
+
 }
 
 
