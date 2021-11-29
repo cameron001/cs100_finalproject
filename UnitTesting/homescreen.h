@@ -147,18 +147,10 @@ public:
 
        void on_librarianLoginButton_clicked();
 
-       /**
-         @brief    createListBooks       A public member function that shows a buttonthat list Text books. This button when
-                                                       pressed will take the user to a new window that list books
-         @author   mibra032
-         @date     11/14/2021
-         */
-
-       void createListBooks();
 
 
 
-       void on_booksList_clicked();
+
 
 public slots:
        /**

@@ -39,12 +39,12 @@
       <rect>
        <x>10</x>
        <y>0</y>
-       <width>221</width>
-       <height>16</height>
+       <width>241</width>
+       <height>21</height>
       </rect>
      </property>
      <property name="text">
-      <string>Welcome,  Student/Librarian here</string>
+      <string/>
      </property>
     </widget>
     <widget class="QGroupBox" name="groupBox">
@@ -53,7 +53,7 @@
        <x>10</x>
        <y>30</y>
        <width>231</width>
-       <height>191</height>
+       <height>201</height>
       </rect>
      </property>
      <property name="title">
@@ -121,7 +121,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Search by Author</string>
+       <string>Search by author</string>
       </property>
      </widget>
      <widget class="QRadioButton" name="radio_genre">
@@ -163,12 +163,25 @@
        <string>OR</string>
       </property>
      </widget>
+     <widget class="QRadioButton" name="radio_title">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>180</y>
+        <width>121</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Search by title</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QLineEdit" name="search_text">
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>230</y>
+       <y>250</y>
        <width>231</width>
        <height>31</height>
       </rect>
@@ -178,7 +191,7 @@
      <property name="geometry">
       <rect>
        <x>140</x>
-       <y>270</y>
+       <y>290</y>
        <width>113</width>
        <height>32</height>
       </rect>
@@ -190,8 +203,8 @@
     <widget class="QLabel" name="search_result_lbl">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>290</y>
+       <x>20</x>
+       <y>330</y>
        <width>231</width>
        <height>51</height>
       </rect>
