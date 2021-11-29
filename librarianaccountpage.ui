@@ -117,6 +117,21 @@
     <string>PushButton</string>
    </property>
   </widget>
+
+  <widget class="QPushButton" name="searchByISBNButton">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>160</y>
+     <width>81</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>PushButton</string>
+   </property>
+  </widget>
+
  </widget>
  <resources/>
  <connections/>

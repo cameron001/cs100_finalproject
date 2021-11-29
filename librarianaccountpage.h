@@ -7,6 +7,7 @@
 #include "deletebookpage.h"
 #include "searchbyauthorpage.h"
 #include "searchbytitlepage.h"
+#include "searchbyisbnpage.h"
 #include "addbookpage.h"
 #include "editbookpage.h"
 #include "displaybooks.h"
@@ -35,6 +36,8 @@ public:
 
     void createSearchByAuthorButton();
 
+    void createSearchByISBNButton();
+
     void createSearchByBookTitleButton();
 
     void createDisplayBooksButton();
@@ -45,6 +48,8 @@ private slots:
     void on_deleteBookButton_clicked();
 
     void on_searchByAuthorButton_clicked();
+
+    void on_searchByISBNButton_clicked();
 
     void on_searchByBookTitleButton_clicked();
 

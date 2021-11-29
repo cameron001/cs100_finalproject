@@ -110,6 +110,21 @@ void librarianAccountPage::createSearchByAuthorButton()
     ui->searchByAuthorButton->setGeometry(x + 10, y + 100, 200, 25);
 }
 
+void librarianAccountPage::createSearchByISBNButton()
+{
+    //create font
+    QFont userFont("Courier", 15, QFont::Bold);
+    ui->searchByISBNButton->setFont(userFont);
+    ui->searchByISBNButton->setText("Search By ISBN");
+    ui->searchByISBNButton->setStyleSheet("background-color: black");
+    //Get screen size to center label
+    QScreen *screen = QGuiApplication::primaryScreen();
+    QRect screenGeometry = screen->geometry();
+    int x = (.9 * screenGeometry.width() - ui->searchByISBNButton->width ()) / 2;
+    int y = (.9 * screenGeometry.height() - ui->searchByISBNButton->height ()) / 2;
+    ui->searchByISBNButton->setGeometry(x + 10, y + 100, 200, 25);
+}
+
 void librarianAccountPage::createSearchByBookTitleButton()
 {
     //create font
@@ -152,6 +167,14 @@ void librarianAccountPage::on_deleteBookButton_clicked()
 void librarianAccountPage::on_searchByAuthorButton_clicked()
 {
     searchByAuthorPage newPage;
+    newPage.setModal(true);
+    newPage.show();
+    newPage.exec();
+}
+
+void librarianAccountPage::on_searchByISBNButton_clicked()
+{
+    searchByISBNPage newPage;
     newPage.setModal(true);
     newPage.show();
     newPage.exec();
