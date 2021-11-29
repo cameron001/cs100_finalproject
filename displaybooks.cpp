@@ -37,6 +37,7 @@ DisplayBooks::DisplayBooks(QWidget *parent) :
     ui->welcome_lbl->setText("Welcome, "+HighlanderBooks::user::firstName);
     populateDataSet();
     populateCheckoutList();
+    populateReturnsList();
     ui->student_panel->setGeometry(10,410,271,131);
     connect(ui->radio_all,SIGNAL(clicked()),this,SLOT(showAll()));
     connect(ui->radio_text,SIGNAL(clicked()),this,SLOT(showText()));
@@ -54,6 +55,7 @@ DisplayBooks::DisplayBooks(QWidget *parent) :
         ui->student_overdue->setVisible(true);
 
         ui->admin_fines->setVisible(false);
+         ui->admin_book_returns->setVisible(false);
         showUserFines();
     }
     else
@@ -62,6 +64,7 @@ DisplayBooks::DisplayBooks(QWidget *parent) :
         ui->student_panel->setVisible(false);
         ui->student_overdue->setVisible(false);
         ui->admin_fines->setGeometry(10,510,271,131);
+        ui->admin_book_returns->setGeometry(10,650,271,131);
         showOverDuebooks();
 
      }
@@ -472,7 +475,7 @@ void DisplayBooks::showOverDuebooks()
     QString formattedDate = today.toString("yyyy-MM-dd");
 
     QSqlQuery query;
-    query.exec("select books.title, transactions.id, books.price from books join  transactions on transactions.bookID = books.id left join fines on transactions.id = fines.transID where dueDate< '"+formattedDate+"'  and fines.id is null order by title ");
+    query.exec("select books.title, transactions.id, books.price from books join  transactions on transactions.bookID = books.id left join fines on transactions.id = fines.transID where dueDate< '"+formattedDate+"' and bookReturned=0  and fines.id is null order by title ");
     ui->fines_admin_comboBox->addItem("Select Fine" ,0);
     while(query.next())
     {
@@ -526,3 +529,28 @@ void DisplayBooks::on_createfine_btn_clicked()
 
 }
 
+
+void DisplayBooks::on_return_btn_3_clicked()
+{
+    QString transId= ui->return_admin_comboBox->itemData(ui->return_admin_comboBox->currentIndex()).toString();
+       if(transId !="0")
+       {
+           QSqlQuery query,query2;
+               query.exec("update transactions set bookReturned=1 where id="+transId);
+       }
+       ui->return_admin_comboBox->clear();
+       populateReturnsList();
+}
+
+void DisplayBooks::populateReturnsList()
+{
+    QSqlQuery query;
+    QDateTime today = QDateTime::currentDateTime();
+    QString formattedDate = today.toString("yyyy-MM-dd");
+    query.exec("select transactions.id, books.title  from transactions join books on books.id = transactions.bookID left outer join fines on fines.transID = transactions.id where  bookReturned=0 and transactions.librarianID is not null and (fines.id is null or (fines.id is not null and finePaid=0)) and dueDate>='"+formattedDate+"'");
+    ui->return_admin_comboBox->addItem("Select book" ,0);
+    while(query.next())
+    {
+        ui->return_admin_comboBox->addItem(query.value("title").toString() ,query.value("id").toInt());
+    }
+}

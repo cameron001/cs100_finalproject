@@ -42,6 +42,7 @@ public:
     void showOverDuebooks();
     bool checkUserTrans(QString bookID);
     void showUserFines();
+    void populateReturnsList();
 
 
 private slots:
@@ -62,6 +63,8 @@ private slots:
     void on_pay_btn_2_clicked();
 
     void on_createfine_btn_clicked();
+
+    void on_return_btn_3_clicked();
 
 private:
     Ui::DisplayBooks *ui;
