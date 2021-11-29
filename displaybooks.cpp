@@ -6,17 +6,16 @@ DisplayBooks::DisplayBooks(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DisplayBooks)
 {
-
     ui->setupUi(this);
     centerAndResize();
     model = new QStandardItemModel();
-
     int s = QApplication::primaryScreen()->size().width();
     int h = QApplication::primaryScreen()->size().height();
     connect( ui->booksDataSet, SIGNAL(clicked(QModelIndex)), this, SLOT(onTableClicked(QModelIndex)));
     int threeFourth = s-((s/4)-40);
     ui->rSide1->setGeometry(5+((s/4)-60),0,threeFourth,h);
     ui->rSide1->setFrameShape(QFrame::NoFrame);
+    //ui->admin_panel->setFrameShape(QFrame::NoFrame);
     ui->buttons_container->setFrameShape(QFrame::NoFrame);
     ui->groupBox->setFlat(true);
     ui->groupBox->setStyleSheet("border:0;");
@@ -27,6 +26,7 @@ DisplayBooks::DisplayBooks(QWidget *parent) :
     ui->titleLbl->setStyleSheet("QLabel { color : white; font-size:18px; }");
     ui->titleLbl->setText("Books List ( Click the ISBN to see details ) ");
     ui->titleLbl->setGeometry(0, 10, 400, 30);
+    ui->search_result_lbl->setStyleSheet("color:#e63946");
     ui->booksDataSet->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->scrollArea->setGeometry(0,380,(s-(s/4)-20-400),161);
     ui->genre->setGeometry(0,550,(s-(s/4)-20-400),31);
@@ -36,14 +36,36 @@ DisplayBooks::DisplayBooks(QWidget *parent) :
     ui->booksDataSet->setModel(model);
     ui->welcome_lbl->setText("Welcome, "+HighlanderBooks::user::firstName);
     populateDataSet();
-
+    populateCheckoutList();
+    ui->student_panel->setGeometry(10,410,271,131);
     connect(ui->radio_all,SIGNAL(clicked()),this,SLOT(showAll()));
     connect(ui->radio_text,SIGNAL(clicked()),this,SLOT(showText()));
     connect(ui->radio_ref,SIGNAL(clicked()),this,SLOT(showRef()));
     connect(ui->radio_journal,SIGNAL(clicked()),this,SLOT(showJournals()));
-
-
     ui->booksDataSet->setStyleSheet(" QTableView::item { border-left: 1px solid #fff; border-bottom: 1px solid #fff;}");
+
+    if(HighlanderBooks::user::isLibrarian!=1)
+    {
+        ui->student_panel->setGeometry(10,370,271,131);
+        ui->student_overdue->setGeometry(10,510,271,131);
+        ui->admin_panel->setVisible(false);
+        ui->student_panel->setVisible(true);
+        showDueDates();
+        ui->student_overdue->setVisible(true);
+
+        ui->admin_fines->setVisible(false);
+        showUserFines();
+    }
+    else
+    {
+        ui->admin_panel->setVisible(true);
+        ui->student_panel->setVisible(false);
+        ui->student_overdue->setVisible(false);
+        ui->admin_fines->setGeometry(10,510,271,131);
+        showOverDuebooks();
+
+     }
+
 
 }
 
@@ -175,7 +197,17 @@ void DisplayBooks::onTableClicked(const QModelIndex &index)
             int bookID=index.data( Qt::UserRole+1).toInt();
             int bookType=index.data( Qt::UserRole+2).toInt();
             current = bookID;
-            ui->checkout->setText( "Checkout book with ISBN "+index.data().toString());
+            if(checkUserTrans(QString::number(bookID)))
+            {
+                 ui->checkout->setText( "Book is waiting for Librarian approval");
+                 ui->checkout->setDisabled(true);
+
+            }
+            else if(HighlanderBooks::user::isLibrarian==0)
+            {
+                ui->checkout->setDisabled(false);
+                ui->checkout->setText( "Checkout book with ISBN "+index.data().toString());
+            }
             int wid = QApplication::primaryScreen()->size().width();
             int nw= (wid-((wid/4)+20+400));
 
@@ -227,7 +259,15 @@ void DisplayBooks::onTableClicked(const QModelIndex &index)
                     ui->desc->setWordWrap(true);
                    ui->scrollArea->resize(nw-10,250);;
             }
-            ui->checkout->setVisible(true);
+
+            if(HighlanderBooks::user::isLibrarian==0)
+            {
+                ui->checkout->setVisible(true);
+            }
+            else
+            {
+                  ui->checkout->setVisible(false);
+            }
 
             QNetworkAccessManager *nam = new QNetworkAccessManager(this);
             connect(nam, &QNetworkAccessManager::finished, this, &DisplayBooks::downloadFinished);
@@ -276,7 +316,10 @@ void DisplayBooks::clearBookDetails()
 //    QPixmap pm = ui->imgLbl->pixmap();
     QPixmap nPm;
     ui->imgLbl->setPixmap(nPm);
-    ui->checkout->setVisible(false);
+
+
+      ui->checkout->setVisible(false);
+
 
 }
 
@@ -336,20 +379,150 @@ void DisplayBooks::on_search_btn_clicked()
 
 void DisplayBooks::on_checkout_clicked()
 {
+    if(!checkUserTrans(current.toString()))
+    {
+       QSqlQuery query;
+       query.exec("insert into transactions(bookID,userID) values ("+current.toString()+" , "+QString::number( HighlanderBooks::user::userId)+" )");
+
+
+       ui->checkout->setText( "Book is waiting for Librarian approval");
+       ui->checkout->setDisabled(true);
+    }
+
+
+}
+
+bool DisplayBooks::checkUserTrans(QString bookID)
+{
     QSqlQuery query;
-    query.exec("select * from ransactions where bookID="+current.toString()+" and userID="+QString::number( HighlanderBooks::user::userId)+" and bookReturned=0");
+    query.exec("select * from transactions where bookID="+bookID+" and userID="+QString::number( HighlanderBooks::user::userId)+" and librarianID is null");
     int notExist=0;
     while(query.next())
     {
         notExist=1;
     }
-    if(!notExist)
-    {
-       query.exec("insert into ransactions(bookID,userID) values ("+current.toString()+" , "+QString::number( HighlanderBooks::user::userId)+" )");
-    }
+    return notExist;
+}
 
+void DisplayBooks::populateCheckoutList()
+{
+    QSqlQuery query;
+    query.exec("select * from transactions  join books on transactions.id = books.id where librarianID is null order by title ");
+    ui->checkout_combox->addItem("Select book to checkout" ,0);
+    while(query.next())
+    {
+        ui->checkout_combox->addItem(query.value("title").toString() ,query.value("id").toInt());
+    }
 }
 
 
+void DisplayBooks::showDueDates()
+{
+    QSqlQuery query;
+    query.exec("select fines.id, books.* ,strftime('%m/%d/%Y', dueDate)  as duedate from transactions join books on books.id = transactions.bookID left outer join fines on fines.transID = transactions.id where transactions.userID ="+QString::number(HighlanderBooks::user::userId)+" and bookReturned=0 and transactions.librarianID is not null and (fines.id is null or (fines.id is not null and finePaid=0)) ");
 
+
+    QString tbl= "<table width=\"250\" border=\"0\"><tr><th width=\"250\" align=\"left\" style=\"color:#a8dadc\" >Your Books due dates</th></tr>";
+    int i=0;
+    while(query.next())
+    {
+        tbl+="<tr><td width=\"250\" style=\"color:#90e0ef\">"+query.value("title").toString()+"<span style=\"color:#caf0f8\"><i> ("+query.value("duedate").toString()+")</i></span></td></tr>";
+        i++;
+    }
+    if(i==0)
+    {
+      tbl+="<tr><td width=\"250\" style=\"color:#90e0ef\">You don't have books</td</tr>";
+    }
+    tbl+="</table>";
+    QWidget * container1 = new QWidget;
+    QFormLayout *formLayout1 = new QFormLayout();
+
+    QHBoxLayout * hBoxLayout1= new QHBoxLayout;
+    QLabel *txtLabel = new QLabel;
+    txtLabel->setText(tbl);
+    hBoxLayout1->addWidget(txtLabel);
+    formLayout1->addRow(hBoxLayout1);
+    ui->student_panel->setWidget(container1);
+
+    container1->setLayout(formLayout1);
+
+}
+
+void DisplayBooks::on_checkout_btn_clicked()
+{
+
+    QDateTime today = QDateTime::currentDateTime();
+    QString formattedDate = today.toString("yyyy-MM-dd");
+
+    QDateTime nextWeek = QDateTime::currentDateTime().addDays(7);
+    QString nextweekFormatted = nextWeek.toString("yyyy-MM-dd");
+ QString transId= ui->checkout_combox->itemData(ui->checkout_combox->currentIndex()).toString();
+    if(transId !="0")
+    {
+        QSqlQuery query;
+        query.exec("update transactions set librarianID= "+QString::number(HighlanderBooks::user::userId)+", issueDate= '"+formattedDate+"' , dueDate = '"+nextweekFormatted+"' where id= "+transId);
+         ui->checkout_combox->clear();
+         populateCheckoutList();
+    }
+}
+
+void DisplayBooks::showOverDuebooks()
+{
+    QDateTime today = QDateTime::currentDateTime();
+    QString formattedDate = today.toString("yyyy-MM-dd");
+
+    QSqlQuery query;
+    query.exec("select books.title, transactions.id, books.price from books join  transactions on transactions.bookID = books.id left join fines on transactions.id = fines.transID where dueDate< '"+formattedDate+"'  and fines.id is null order by title ");
+    ui->fines_admin_comboBox->addItem("Select Fine" ,0);
+    while(query.next())
+    {
+        ui->fines_admin_comboBox->addItem(query.value("title").toString()+" ( $ "+query.value("price").toString()+" )" ,query.value("id").toInt());
+
+    }
+}
+
+void DisplayBooks::showUserFines()
+{
+
+    QSqlQuery query;
+    query.exec("select books.title, fines.AmountDue , fines.id from fines inner join transactions on transactions.id = fines.transID  inner join books on  books.id= transactions.bookID where finePaid=0 and  fines.userID="+QString::number(HighlanderBooks::user::userId)+" order by title ");
+    ui->overdue_comboBox->addItem("Select Fine" ,0);
+    while(query.next())
+    {
+        ui->overdue_comboBox->addItem(query.value("title").toString()+" ( $ "+query.value("AmountDue").toString()+" )" ,query.value("id").toInt());
+    }
+}
+
+
+void DisplayBooks::on_pay_btn_2_clicked()
+{
+    QString transId= ui->fines_admin_comboBox->itemData(ui->fines_admin_comboBox->currentIndex()).toString();
+       if(transId !="0")
+       {
+           QSqlQuery query,query2;
+           query.exec("select books.price, transactions.userID from transactions join books on books.id = transactions.bookID where transactions.id="+transId);
+           while(query.next())
+           {
+               query2.exec("insert into fines (transID, AmountDue, userID, librarianID) values( "+transId+", "+query.value("price").toString()+", "+query.value("userID").toString()+", "+QString::number(HighlanderBooks::user::userId)+" )");
+
+           }
+       }
+       ui->fines_admin_comboBox->clear();
+       showOverDuebooks();
+}
+
+
+void DisplayBooks::on_createfine_btn_clicked()
+{
+    QString fineId= ui->overdue_comboBox->itemData(ui->overdue_comboBox->currentIndex()).toString();
+       if(fineId !="0")
+       {
+           QSqlQuery query,query2;
+           query.exec("update fines set finePaid=1 where id="+fineId);
+       }
+       ui->overdue_comboBox->clear();
+       showUserFines();
+       showDueDates();
+
+}
 

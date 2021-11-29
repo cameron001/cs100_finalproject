@@ -37,6 +37,11 @@ public:
     void getJournalbooks();
     void populateDataSet();
     void clearBookDetails();
+    void populateCheckoutList();
+    void showDueDates();
+    void showOverDuebooks();
+    bool checkUserTrans(QString bookID);
+    void showUserFines();
 
 
 private slots:
@@ -51,6 +56,12 @@ private slots:
     void on_checkout_clicked();
 
 
+
+    void on_checkout_btn_clicked();
+
+    void on_pay_btn_2_clicked();
+
+    void on_createfine_btn_clicked();
 
 private:
     Ui::DisplayBooks *ui;

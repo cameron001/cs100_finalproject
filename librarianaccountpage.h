@@ -43,7 +43,7 @@ public:
     void createDisplayBooksButton();
     void createLogoutbtn();
 void on_searchByISBNButton_clicked();
-void createSearchByISBNButton();
+
 
 
 private slots:
@@ -51,7 +51,7 @@ private slots:
 
     void on_searchByAuthorButton_clicked();
 
-    void on_searchByISBNButton_clicked();
+
 
     void on_searchByBookTitleButton_clicked();
 

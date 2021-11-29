@@ -64,7 +64,7 @@ void librarianAccountPage::createAddBookButton()
     QRect screenGeometry = screen->geometry();
     int x = (.9 * screenGeometry.width() - ui->addBookButton->width ()) / 2;
     int y = (.9 * screenGeometry.height() - ui->addBookButton->height ()) / 2;
-    ui->addBookButton->setGeometry(x + 10, y - 50, 200, 25);
+    ui->addBookButton->setGeometry(x + 10, y - 50, 250, 25);
 }
 
 void librarianAccountPage::createEditBookButton()
@@ -79,7 +79,7 @@ void librarianAccountPage::createEditBookButton()
     QRect screenGeometry = screen->geometry();
     int x = (.9 * screenGeometry.width() - ui->editBookButton->width ()) / 2;
     int y = (.9 * screenGeometry.height() - ui->editBookButton->height ()) / 2;
-    ui->editBookButton->setGeometry(x + 10, y + 50, 200, 25);
+    ui->editBookButton->setGeometry(x + 10, y + 50, 250, 25);
 }
 
 void librarianAccountPage::createDeleteBookButton()
@@ -94,7 +94,7 @@ void librarianAccountPage::createDeleteBookButton()
     QRect screenGeometry = screen->geometry();
     int x = (.9 * screenGeometry.width() - ui->deleteBookButton->width ()) / 2;
     int y = (.9 * screenGeometry.height() - ui->deleteBookButton->height ()) / 2;
-    ui->deleteBookButton->setGeometry(x + 10, y, 200, 25);
+    ui->deleteBookButton->setGeometry(x + 10, y, 250, 25);
 }
 
 void librarianAccountPage::createSearchByAuthorButton()
@@ -109,7 +109,7 @@ void librarianAccountPage::createSearchByAuthorButton()
     QRect screenGeometry = screen->geometry();
     int x = (.9 * screenGeometry.width() - ui->searchByAuthorButton->width ()) / 2;
     int y = (.9 * screenGeometry.height() - ui->searchByAuthorButton->height ()) / 2;
-    ui->searchByAuthorButton->setGeometry(x + 10, y + 100, 200, 25);
+    ui->searchByAuthorButton->setGeometry(x + 10, y + 100, 250, 25);
 }
 
 void librarianAccountPage::createSearchByISBNButton()
@@ -124,7 +124,7 @@ void librarianAccountPage::createSearchByISBNButton()
     QRect screenGeometry = screen->geometry();
     int x = (.9 * screenGeometry.width() - ui->searchByISBNButton->width ()) / 2;
     int y = (.9 * screenGeometry.height() - ui->searchByISBNButton->height ()) / 2;
-    ui->searchByISBNButton->setGeometry(x + 10, y + 100, 200, 25);
+    ui->searchByISBNButton->setGeometry(x + 10, y + 100, 250, 25);
 }
 
 void librarianAccountPage::createSearchByBookTitleButton()
@@ -139,7 +139,7 @@ void librarianAccountPage::createSearchByBookTitleButton()
     QRect screenGeometry = screen->geometry();
     int x = (.9 * screenGeometry.width() - ui->searchByBookTitleButton->width ()) / 2;
     int y = (.9 * screenGeometry.height() - ui->searchByBookTitleButton->height ()) / 2;
-    ui->searchByBookTitleButton->setGeometry(x + 10, y + 150, 200, 25);
+    ui->searchByBookTitleButton->setGeometry(x + 10, y + 150, 250, 25);
 }
 
 void librarianAccountPage::createDisplayBooksButton()
@@ -147,14 +147,14 @@ void librarianAccountPage::createDisplayBooksButton()
     //create font
     QFont userFont("Courier", 15, QFont::Bold);
     ui->displayBooksButton->setFont(userFont);
-    ui->displayBooksButton->setText("Display Books");
+    ui->displayBooksButton->setText("Books, Checkout and Fines");
     ui->displayBooksButton->setStyleSheet("background-color: black");
     //Get screen size to center label
     QScreen *screen = QGuiApplication::primaryScreen();
     QRect screenGeometry = screen->geometry();
     int x = (.9 * screenGeometry.width() - ui->displayBooksButton->width ()) / 2;
     int y = (.9 * screenGeometry.height() - ui->displayBooksButton->height ()) / 2;
-    ui->displayBooksButton->setGeometry(x + 10, y + 200, 200, 25);
+    ui->displayBooksButton->setGeometry(x + 10, y + 200, 250, 25);
 }
 
 void librarianAccountPage::on_deleteBookButton_clicked()
@@ -209,20 +209,7 @@ void librarianAccountPage::on_editBookButton_clicked()
     newPage.exec();
 }
 
-void librarianAccountPage::createSearchByISBNButton()
-{
-    //create font
-    QFont userFont("Courier", 15, QFont::Bold);
-    ui->searchByISBNButton->setFont(userFont);
-    ui->searchByISBNButton->setText("Search By ISBN");
-    ui->searchByISBNButton->setStyleSheet("background-color: black");
-    //Get screen size to center label
-    QScreen *screen = QGuiApplication::primaryScreen();
-    QRect screenGeometry = screen->geometry();
-    int x = (.9 * screenGeometry.width() - ui->searchByISBNButton->width ()) / 2;
-    int y = (.9 * screenGeometry.height() - ui->searchByISBNButton->height ()) / 2;
-    ui->searchByISBNButton->setGeometry(x + 10, y + 250, 200, 25);
-}
+
 
 void librarianAccountPage::createLogoutbtn(){
     //create font
@@ -235,16 +222,9 @@ void librarianAccountPage::createLogoutbtn(){
     QRect screenGeometry = screen->geometry();
     int x = (.9 * screenGeometry.width() - ui->logout->width ()) / 2;
     int y = (.9 * screenGeometry.height() - ui->logout->height ()) / 2;
-    ui->logout->setGeometry(x + 10, y + 300, 200, 25);
+    ui->logout->setGeometry(x + 10, y + 250, 250, 25);
 }
 
-void librarianAccountPage::on_searchByISBNButton_clicked()
-{
-    searchByISBNPage newPage;
-    newPage.setModal(true);
-    newPage.show();
-    newPage.exec();
-}
 
 
 void librarianAccountPage::on_logout_clicked()
