@@ -140,6 +140,7 @@ void
  ## Screenshots
 
 ![1.](https://user-images.githubusercontent.com/29784969/144005610-d72350a1-c88c-4c44-bd7a-031cd08ae15c.png =250x250)
+<img src="https://user-images.githubusercontent.com/29784969/144005610-d72350a1-c88c-4c44-bd7a-031cd08ae15c.png" width="300">
 
 ![2.](https://user-images.githubusercontent.com/29784969/144005617-a1ea50a0-14f7-47e7-a544-9f1f95641fc3.png =250x250)
 
