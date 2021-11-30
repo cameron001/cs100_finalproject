@@ -52,32 +52,6 @@
     <string>PushButton</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="transactionButton">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>220</y>
-     <width>80</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>PushButton</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="accountDebtButton">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>260</y>
-     <width>80</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>PushButton</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="logout">
    <property name="geometry">
     <rect>

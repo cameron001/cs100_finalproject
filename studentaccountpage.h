@@ -42,9 +42,8 @@ public:
 
           void createLibraryBooksButton();
 
-          void createTransactionButton();
 
-          void createAccountDebtButton();
+
           void createLogoutButton();
 
 private slots:

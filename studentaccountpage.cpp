@@ -12,10 +12,8 @@ studentAccountPage::studentAccountPage(QWidget *parent) :
     centerAndResize();
     setStyleSheet("background-color: white");
     createWelcomeLabel();
-    createAccountDebtButton();
     createAccountInfoButton();
     createLibraryBooksButton();
-    createTransactionButton();
     createLogoutButton();
 
     //createAccountInfoToolButton();
@@ -50,7 +48,7 @@ void studentAccountPage::createWelcomeLabel()
     QRect screenGeometry = screen->geometry();
     int x = (.9 * screenGeometry.width() - ui->loginLabel->width ()) / 2;
     int y = (.9 * screenGeometry.height() - ui->loginLabel->height ()) / 2;
-    ui->loginLabel->setGeometry(x + 25, y - 300, 150, 50);
+    ui->loginLabel->setGeometry(x + 25, y - 300, 250, 50);
 }
 
 void studentAccountPage::createAccountInfoButton()
@@ -65,7 +63,7 @@ void studentAccountPage::createAccountInfoButton()
     QRect screenGeometry = screen->geometry();
     int x = (.9 * screenGeometry.width() - ui->accountInfoButton->width ()) / 2;
     int y = (.9 * screenGeometry.height() - ui->accountInfoButton->height ()) / 2;
-    ui->accountInfoButton->setGeometry(x + 10, y - 50, 200, 25);
+    ui->accountInfoButton->setGeometry(x + 10, y - 50, 250, 25);
 }
 
 void studentAccountPage::createLibraryBooksButton()
@@ -73,30 +71,17 @@ void studentAccountPage::createLibraryBooksButton()
     //create font
     QFont userFont("Courier", 15, QFont::Bold);
     ui->libraryBooksButton->setFont(userFont);
-    ui->libraryBooksButton->setText("Library Books");
+    ui->libraryBooksButton->setText("Library Books and Checkout");
     ui->libraryBooksButton->setStyleSheet("background-color: black");
     //Get screen size to center label
     QScreen *screen = QGuiApplication::primaryScreen();
     QRect screenGeometry = screen->geometry();
     int x = (.9 * screenGeometry.width() - ui->libraryBooksButton->width ()) / 2;
     int y = (.9 * screenGeometry.height() - ui->libraryBooksButton->height ()) / 2;
-    ui->libraryBooksButton->setGeometry(x + 10, y, 200, 25);
+    ui->libraryBooksButton->setGeometry(x + 10, y, 250, 25);
 }
 
-void studentAccountPage::createTransactionButton()
-{
-    //create font
-    QFont userFont("Courier", 15, QFont::Bold);
-    ui->transactionButton->setFont(userFont);
-    ui->transactionButton->setText("Create Transaction");
-    ui->transactionButton->setStyleSheet("background-color: black");
-    //Get screen size to center label
-    QScreen *screen = QGuiApplication::primaryScreen();
-    QRect screenGeometry = screen->geometry();
-    int x = (.9 * screenGeometry.width() - ui->transactionButton->width ()) / 2;
-    int y = (.9 * screenGeometry.height() - ui->transactionButton->height ()) / 2;
-    ui->transactionButton->setGeometry(x+ 10, y + 50, 200, 25);
-}
+
 
 void studentAccountPage::createLogoutButton()
 {
@@ -110,23 +95,9 @@ void studentAccountPage::createLogoutButton()
     QRect screenGeometry = screen->geometry();
     int x = (.9 * screenGeometry.width() - ui->logout->width ()) / 2;
     int y = (.9 * screenGeometry.height() - ui->logout->height ()) / 2;
-    ui->logout->setGeometry(x+ 10, y + 150, 200, 25);
+    ui->logout->setGeometry(x+ 10, y + 50, 250, 25);
 }
 
-void studentAccountPage::createAccountDebtButton()
-{
-    //create font
-    QFont userFont("Courier", 15, QFont::Bold);
-    ui->accountDebtButton->setFont(userFont);
-    ui->accountDebtButton->setText("Account Debt");
-    ui->accountDebtButton->setStyleSheet("background-color: black");
-    //Get screen size to center label
-    QScreen *screen = QGuiApplication::primaryScreen();
-    QRect screenGeometry = screen->geometry();
-    int x = (.9 * screenGeometry.width() - ui->accountDebtButton->width ()) / 2;
-    int y = (.9 * screenGeometry.height() - ui->accountDebtButton->height ()) / 2;
-    ui->accountDebtButton->setGeometry(x+ 10, y + 100, 200, 25);
-}
 
 
 void studentAccountPage::on_accountInfoButton_clicked()
