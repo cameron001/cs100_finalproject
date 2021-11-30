@@ -140,19 +140,21 @@ void
  ## Screenshots
 
 
-<img src="https://user-images.githubusercontent.com/29784969/144005610-d72350a1-c88c-4c44-bd7a-031cd08ae15c.png" width="500">
+<img src="https://user-images.githubusercontent.com/29784969/144005610-d72350a1-c88c-4c44-bd7a-031cd08ae15c.png" width="400">
 
-<img src="https://user-images.githubusercontent.com/29784969/144005617-a1ea50a0-14f7-47e7-a544-9f1f95641fc3.png" width="500">
+<img src="https://user-images.githubusercontent.com/29784969/144005617-a1ea50a0-14f7-47e7-a544-9f1f95641fc3.png" width="400">
 
-<img src="https://user-images.githubusercontent.com/29784969/144005621-d7203772-5433-4432-b353-5c632558ab99.png" width="500">
+<img src="https://user-images.githubusercontent.com/29784969/144005621-d7203772-5433-4432-b353-5c632558ab99.png" width="400">
 
-<img src="https://user-images.githubusercontent.com/29784969/144005626-aea3018f-173d-4fa2-a600-f38a2216d7de.png" width="500">
+<img src="https://user-images.githubusercontent.com/29784969/144005626-aea3018f-173d-4fa2-a600-f38a2216d7de.png" width="400">
 
-<img src="https://user-images.githubusercontent.com/29784969/144005627-ffed0644-6de7-4ae4-996e-371d13f16ab6.png" width="500">
+<img src="https://user-images.githubusercontent.com/29784969/144005627-ffed0644-6de7-4ae4-996e-371d13f16ab6.png" width="400">
 
-<img src="https://user-images.githubusercontent.com/29784969/144005634-7320d887-4f7d-4d95-8bae-9137cb933e49.png" width="500">
+<img src="https://user-images.githubusercontent.com/29784969/144005634-7320d887-4f7d-4d95-8bae-9137cb933e49.png" width="400">
 
-<img src="https://user-images.githubusercontent.com/29784969/144005637-7cc9e885-0a7c-413c-a607-01c38481fe45.png" width="500">
+<img src="https://user-images.githubusercontent.com/29784969/144005637-7cc9e885-0a7c-413c-a607-01c38481fe45.png" width="400">
+
+
  ## Installation/Usage
  > We created our project using the QT framework so that will be needed in order to run the application as we are not ready for a deployment yet
  > Install QT 6.2.1 for the specified operating system (i.e.) MacOs or Windows
