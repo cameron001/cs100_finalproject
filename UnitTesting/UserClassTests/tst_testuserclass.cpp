@@ -51,6 +51,10 @@ void testUserClass::test_case1_normal()
 void testUserClass::test_case2_leavingempty(){
 
     HighlanderBooks::user* testuser2 = new HighlanderBooks::user();
+    testuser2->setFirstName("");
+    testuser2->setLastName("");
+    testuser2->setUsername("");
+    testuser2->setUserId(0);
 
     testuser2->setUserId(0);
 
