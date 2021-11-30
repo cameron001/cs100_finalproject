@@ -162,7 +162,7 @@ void
  > Click the green arrow that says run in the bottom left corner
  ## Testing
  > We tested the project using the built-in QT framework testing system. It is similar to google test, but also works with Qt exclusive components. 
- > Tested the book factory class including the different types of book that can be created-> (i.e textbook, journal, refbook)
- > Tested the user class
- > Tested the db basic properties
+ > Tested the book factory class including the different types of book that can be created-> (i.e textbook, journal, refbook).
+ > Tested the user class.
+ > Tested the db basic properties.
  
