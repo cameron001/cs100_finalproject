@@ -1,7 +1,7 @@
 #include <QtTest>
 #include <QCoreApplication>
 #include "../TextBook.h"
-#include "../RefBook.h"
+//#include "../RefBook.h"
 #include "../journal.h"
 #include "../book.h"
 // add necessary includes here
@@ -43,7 +43,7 @@ void booktesting::test_text()
     QVERIFY(test->getLanguage() == "English");
     QVERIFY(test->getTitle() == "Hunger Games");
 }
-
+/*
 void booktesting::test_ref()
 {
     RefBook* test = new RefBook();
@@ -57,7 +57,7 @@ void booktesting::test_ref()
     QVERIFY(test->getLanguage() == "English");
     QVERIFY(test->getTitle() == "Hunger Games");
 }
-
+*/
 void booktesting::test_jour()
 {
     journal* test = new journal();

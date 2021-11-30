@@ -1,11 +1,11 @@
 #ifndef TEXTBOOK_H
 #define TEXTBOOK_H
-#include"book.h"
+#include "book.h"
 
-#endif // TEXTBOOK_H
+ // TEXTBOOK_H
 namespace HighlanderBooks  {
 
-class TextBook:public Book{
+class TextBook : public Book{
 public:
 
     TextBook(){
@@ -258,3 +258,4 @@ private:
 
 
 }
+#endif

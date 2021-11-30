@@ -1,11 +1,12 @@
 #ifndef REFBOOK_H
 #define REFBOOK_H
-#include"book.h"
+#include "book.h"
 
-#endif // REFBOOK_H
+
+// REFBOOK_H
 namespace HighlanderBooks  {
 
-class RefBook:public Book{
+class RefBook :  public Book{
 public:
 
     RefBook(){
@@ -189,3 +190,4 @@ private:
 
 
 }
+#endif
