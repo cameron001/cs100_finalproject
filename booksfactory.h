@@ -175,11 +175,12 @@ public:
 
    vector<vector<Book*>> lookupBooks(string col, string findMe)
    {
+       std::transform(findMe.begin(), findMe.end(), findMe.begin(),
+           [](unsigned char c){ return std::tolower(c); });
 
       if(col=="genres" || col=="author" )
        {
-           std::transform(findMe.begin(), findMe.end(), findMe.begin(),
-               [](unsigned char c){ return std::tolower(c); });
+
 
              factPtr = new TextBook();
              string sql="select * from books where book_type=0 and lower("+col+") like \"%"+findMe+"%\"";
@@ -251,8 +252,12 @@ public:
    }
 
     ~BooksFactory(){
-        delete factPtr;
 
+        delete factPtr;
+           for (int i = 0; i < booksPtrs.size(); ++i) {
+                    booksPtrs[i].clear();
+                }
+                booksPtrs.clear();
         }
 
 
