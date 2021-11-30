@@ -112,7 +112,7 @@ void
 
 ### Factory Pattern
 
-![Class Diagram Library System (1)](https://user-images.githubusercontent.com/86706385/140853526-22b44b07-5032-45e3-a5c7-ea2169b0a8eb.jpeg) 
+![Class Diagram Library System (1)][Class Diagram Library System Updated.pdf](https://github.com/cs100/final-project-bdick011-cward005-jchav198-mibra032/files/7622004/Class.Diagram.Library.System.Updated.pdf) 
  ## Phase III
  > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
  > * Before the meeting you should perform a sprint plan like you did in Phase II.
