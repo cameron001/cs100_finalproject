@@ -39,9 +39,9 @@
  
  #### Outputs
  1) Reports about borrowed books and dates to be returned
- 2) Suggestion of books for users based on recent borrowed history
- 3) Date & time borrower needs to physically return the books
- 4) History list of books a borrower had borrowed
+ 2) Date & time borrower needs to physically return the books
+ 3) History list of books a borrower had borrowed
+ 4) Fines if books are overdue
  
  
  ### Features
