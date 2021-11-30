@@ -176,7 +176,7 @@ public:
    vector<vector<Book*>> lookupBooks(string col, string findMe)
    {
 
-       if(col=="genres" || col=="author" )
+      if(col=="genres" || col=="author" )
        {
            std::transform(findMe.begin(), findMe.end(), findMe.begin(),
                [](unsigned char c){ return std::tolower(c); });
@@ -189,6 +189,33 @@ public:
                  booksPtrs.push_back(temp);
              }
        }
+       else if(col=="isbn")
+      {
+          factPtr = new TextBook();
+          string sql="select * from books where book_type=0 and lower("+col+") = \""+findMe+"\"";
+          vector<Book *> temp= factPtr->lookupBooks(sql);
+          if (temp.size()>0)
+          {
+               booksPtrs.push_back(temp);
+          }
+
+          sql="select * from books where book_type=1 and lower("+col+") = \""+findMe+"\"";
+          factPtr = new RefBook();
+          vector<Book *> temp2= factPtr->lookupBooks(sql);
+          if (temp2.size()>0)
+          {
+               booksPtrs.push_back(temp2);
+          }
+
+               sql="select * from books where book_type=2 and lower("+col+") = \""+findMe+"\"";
+              factPtr = new RefBook();
+              vector<Book *> temp3= factPtr->lookupBooks(sql);
+              if (temp3.size()>0)
+              {
+                   booksPtrs.push_back(temp3);
+              }
+
+      }
        else
        {
            factPtr = new TextBook();

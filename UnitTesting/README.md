@@ -112,7 +112,7 @@ void
 
 ### Factory Pattern
 
-![Class Diagram Library System (1)](https://user-images.githubusercontent.com/86706385/140853526-22b44b07-5032-45e3-a5c7-ea2169b0a8eb.jpeg) 
+![Class Diagram Library System (1)](https://user-images.githubusercontent.com/43656272/143964381-88bd0321-73f1-4bdd-acf2-d7b6f43bd28b.png)
  ## Phase III
  > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
  > * Before the meeting you should perform a sprint plan like you did in Phase II.
@@ -140,7 +140,10 @@ void
  ## Screenshots
  > Screenshots of the input/output after running your application
  ## Installation/Usage
- > Instructions on installing and running your application
+ > We created our project using the QT framework so that will be needed in order to run the application as we are not ready for a deployment yet
+ > Install QT 6.2.1 for the specified operating system (i.e.) MacOs or Windows
+ > Load the .pro file into QT using file->open existing project
+ > Click the green arrow that says run in the bottom left corner
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+ > We tested the project using the built-in QT framework testing system. It is similar to google test, but also works with Qt exclusive components. 
  
