@@ -140,8 +140,10 @@ void
  ## Screenshots
  > Screenshots of the input/output after running your application
  ## Installation/Usage
- > Instructions on installing and running your application
+ > We created our project using the QT framework so that will be needed in order to run the application as we are not ready for a deployment yet
+ > Install QT 6.2.1 for the specified operating system (i.e.) MacOs or Windows
+ > Load the .pro file into QT using file->open existing project
+ > Click the green arrow that says run in the bottom left corner
  ## Testing
- >
- > We tested the project using the built-in QT testing system. It is similar to google test, but also works with Qt exclusive components. 
+ > We tested the project using the built-in QT framework testing system. It is similar to google test, but also works with Qt exclusive components. 
  
