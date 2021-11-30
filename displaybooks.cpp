@@ -410,7 +410,7 @@ bool DisplayBooks::checkUserTrans(QString bookID)
 void DisplayBooks::populateCheckoutList()
 {
     QSqlQuery query;
-    query.exec("select * from transactions  join books on transactions.id = books.id where librarianID is null order by title ");
+    query.exec("select books.title, transactions.id from transactions  join books on transactions.bookID = books.id where librarianID is null order by title ");
     ui->checkout_combox->addItem("Select book to checkout" ,0);
     while(query.next())
     {
@@ -466,6 +466,9 @@ void DisplayBooks::on_checkout_btn_clicked()
         query.exec("update transactions set librarianID= "+QString::number(HighlanderBooks::user::userId)+", issueDate= '"+formattedDate+"' , dueDate = '"+nextweekFormatted+"' where id= "+transId);
          ui->checkout_combox->clear();
          populateCheckoutList();
+
+         ui->return_admin_comboBox->clear();
+         populateReturnsList();
     }
 }
 
