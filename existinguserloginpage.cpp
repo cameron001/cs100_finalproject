@@ -3,6 +3,7 @@
 
 existingUserLoginPage::existingUserLoginPage(QWidget *parent) :
     QDialog(parent),
+
     ui(new Ui::existingUserLoginPage)
 {
     ui->setupUi(this);
@@ -124,6 +125,7 @@ HighlanderBooks::user* existingUserLoginPage::login(QString username, QString pa
             HighlanderBooks::user::studentID= query.value("studentID").toString();
             HighlanderBooks::user::userType= query.value("userType").toString();
             HighlanderBooks::user::isLibrarian=0;
+            HighlanderBooks::user::isFaculty=0;
             QMessageBox success;
             QFont userFont("Courier", 15, QFont::Bold);
             success.setIcon(QMessageBox::Information);
