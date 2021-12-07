@@ -45,7 +45,7 @@ DisplayBooks::DisplayBooks(QWidget *parent) :
     connect(ui->radio_journal,SIGNAL(clicked()),this,SLOT(showJournals()));
     ui->booksDataSet->setStyleSheet(" QTableView::item { border-left: 1px solid #fff; border-bottom: 1px solid #fff;}");
 
-    if(HighlanderBooks::user::(isLibrarian || isFaculty)!=1)
+    if(HighlanderBooks::user:: isFaculty!=1)
     {
         ui->student_panel->setGeometry(10,370,271,131);
         ui->student_overdue->setGeometry(10,510,271,131);
