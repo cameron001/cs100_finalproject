@@ -232,7 +232,7 @@ void facultyAccountPage::on_logout_clicked()
     HighlanderBooks::user::userId = 0;
     HighlanderBooks::user::firstName = "";
     HighlanderBooks::user::userType = "";
-    HighlanderBooks::user::isfaculty = 0;
+    HighlanderBooks::user::isFaculty = 0;
     HighlanderBooks::user::studentID = "";
     this->close();
     dailog->close();
