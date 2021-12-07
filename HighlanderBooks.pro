@@ -23,6 +23,8 @@ SOURCES += \
     editrefbook.cpp \
     edittextbook.cpp \
     existinguserloginpage.cpp \
+    facultyaccountpage.cpp \
+    facultylogin.cpp \
     homescreen.cpp \
     librarianaccountpage.cpp \
     librarianlogin.cpp \
@@ -50,6 +52,8 @@ HEADERS += \
     editrefbook.h \
     edittextbook.h \
     existinguserloginpage.h \
+    facultyaccountpage.h \
+    facultylogin.h \
     homescreen.h \
     librarianaccountpage.h \
     librarianlogin.h \
@@ -72,6 +76,8 @@ FORMS += \
     editrefbook.ui \
     edittextbook.ui \
     existinguserloginpage.ui \
+    facultyaccountpage.ui \
+    facultylogin.ui \
     homescreen.ui \
     librarianaccountpage.ui \
     librarianlogin.ui \
