@@ -4,6 +4,7 @@ QString HighlanderBooks::user::firstName="";
 QString HighlanderBooks::user::studentID="";
 QString HighlanderBooks::user::userType="";
 int HighlanderBooks::user::isLibrarian=0;
+int HighlanderBooks::user::isFaculty=0;
 
 namespace HighlanderBooks {
 
@@ -63,8 +64,10 @@ void user::setUserId(int value)
 QString user::getStudentID(){ return studentID;}
 QString user::getUserType(){return userType;}
 int user::getisLibrarian(){return isLibrarian;}
+int user::getisFaculty(){return isFaculty;}
 
 void user::setStudentID(QString& value){studentID = value;}
 void user::setisLibrarian( int& value){isLibrarian=value;}
+void user::setisFaculty( int& value){isFaculty=value;}
 void user::setUserType( QString& value){userType=value;}
 }
