@@ -26,6 +26,8 @@ SOURCES += \
     homescreen.cpp \
     librarianaccountpage.cpp \
     librarianlogin.cpp \
+    facultyaccountpage.cpp \
+    facultylogin.cpp \
     main.cpp \
     searchbyauthorpage.cpp \
     searchbyisbnpage.cpp \
@@ -53,6 +55,8 @@ HEADERS += \
     homescreen.h \
     librarianaccountpage.h \
     librarianlogin.h \
+    facultyaccountpage.h \
+    facultylogin.h \
     searchbyauthorpage.h \
     searchbyisbnpage.h \
     searchbytitlepage.h \
@@ -75,6 +79,8 @@ FORMS += \
     homescreen.ui \
     librarianaccountpage.ui \
     librarianlogin.ui \
+    facultyaccountpage.ui \
+    facultylogin.ui \
     searchbyauthorpage.ui \
     searchbyisbnpage.ui \
     searchbytitlepage.ui \
