@@ -18,7 +18,7 @@ facultyAccountPage::facultyAccountPage(QWidget* parent) :
     createSearchByISBNButton();
     createLogoutbtn();
 
-    dailog = parent;
+    dialog = parent;
 }
 
 facultyAccountPage::~facultyAccountPage()
@@ -235,7 +235,7 @@ void facultyAccountPage::on_logout_clicked()
     HighlanderBooks::user::isFaculty = 0;
     HighlanderBooks::user::studentID = "";
     this->close();
-    dailog->close();
+    dialog->close();
 }
 
 
