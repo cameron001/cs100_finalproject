@@ -122,10 +122,10 @@
    <widget class="QPushButton" name="facultyLoginButton">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>170</y>
-      <width>80</width>
-      <height>24</height>
+      <x>340</x>
+      <y>190</y>
+      <width>91</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
