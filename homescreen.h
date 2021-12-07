@@ -3,6 +3,7 @@
 
 #include "existinguserloginpage.h"
 #include "librarianlogin.h"
+#include "facultylogin.h"
 #include "displaybooks.h"
 
 #include <QMainWindow>
@@ -147,7 +148,9 @@ public:
 
        void on_librarianLoginButton_clicked();
 
+       void createFacultyLoginButton();
 
+       void on_facultyLoginButton_clicked();
 
 
 
