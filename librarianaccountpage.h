@@ -1,5 +1,5 @@
-#ifndef LIBRARIANACCOUNTPAGE_H
-#define LIBRARIANACCOUNTPAGE_H
+#ifndef FACULTYACCOUNTPAGE_H
+#define FACULTYACCOUNTPAGE_H
 
 #include <QDialog>
 #include <QScreen>
@@ -13,16 +13,16 @@
 #include "displaybooks.h"
 
 namespace Ui {
-class librarianAccountPage;
+    class facultyAccountPage;
 }
 
-class librarianAccountPage : public QDialog
+class facultyAccountPage : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit librarianAccountPage(QWidget *parent = nullptr);
-    ~librarianAccountPage();
+    explicit facultyAccountPage(QWidget* parent = nullptr);
+    ~facultyAccountPage();
 
     void centerAndResize();
 
@@ -42,7 +42,7 @@ public:
 
     void createDisplayBooksButton();
     void createLogoutbtn();
-void on_searchByISBNButton_clicked();
+    void on_searchByISBNButton_clicked();
 
 
 
@@ -64,8 +64,8 @@ private slots:
     void on_displayBooksButton_clicked();
 
 private:
-    Ui::librarianAccountPage *ui;
-    QWidget * dailog;
+    Ui::facultyAccountPage* ui;
+    QWidget* dailog;
 };
 
-#endif // LIBRARIANACCOUNTPAGE_H
+#endif // FACULTYACCOUNTPAGE_H
