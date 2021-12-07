@@ -22,6 +22,7 @@
 #include <QScreen>
 #include "user.h"
 #include "librarianaccountpage.h"
+#include "facultyaccountpage.h"
 
 
 class user;
