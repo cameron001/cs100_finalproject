@@ -22,6 +22,7 @@ homeScreen::homeScreen(QWidget *parent)
     createHeadingLabel();
     createDynamicButton();
     createLibrarianLoginButton();
+    createFacultyLoginButton();
 
 }
 
@@ -257,6 +258,33 @@ void homeScreen::on_librarianLoginButton_clicked()
         newLogin.show();
         newLogin.exec();
 }
+
+void homeScreen::createFacultyLoginButton()
+{
+    //create font
+    QFont userFont("Courier", 15, QFont::Bold);
+    ui->facultyLoginButton->setFont(userFont);
+    ui->facultyLoginButton->setText("If you are faculty login here");
+    ui->facultyLoginButton->setStyleSheet("background-color: black");
+    //Get screen size to center label
+    QScreen *screen = QGuiApplication::primaryScreen();
+    QRect screenGeometry = screen->geometry();
+    int x = (.9 * screenGeometry.width() - ui->facultyLoginButton->width ()) / 2;
+    int y = (.9 * screenGeometry.height() - ui->facultyLoginButton->height ()) / 2;
+    ui->facultyLoginButton->setGeometry(x - 100, y + 350, 400, 25);
+}
+
+
+
+void homeScreen::on_facultyLoginButton_clicked()
+{
+        facultyLogin newLogin;
+        newLogin.setModal(true);
+        newLogin.show();
+        newLogin.exec();
+}
+
+
 
 
 
