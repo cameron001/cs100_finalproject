@@ -27,6 +27,8 @@ SOURCES +=  tst_testuserclass.cpp \
     ../homescreen.cpp \
     ../librarianaccountpage.cpp \
     ../librarianlogin.cpp \
+    ../facultyaccountpage.cpp \
+    ../facultylogin.cpp \
     ../searchbyauthorpage.cpp \
     ../searchbyisbnpage.cpp \
     ../searchbytitlepage.cpp \
@@ -52,6 +54,8 @@ FORMS += \
     ../homescreen.ui \
     ../librarianaccountpage.ui \
     ../librarianlogin.ui \
+    ../facultyaccountpage.ui \
+    ../facultylogin.ui \
     ../searchbyauthorpage.ui \
     ../searchbyisbnpage.ui \
     ../searchbytitlepage.ui \
@@ -79,6 +83,8 @@ HEADERS += \
     ../journal.h \
     ../librarianaccountpage.h \
     ../librarianlogin.h \
+    ../facultyaccountpage.h \
+    ../facultylogin.h \
     ../searchbyauthorpage.h \
     ../searchbyisbnpage.h \
     ../searchbytitlepage.h \
@@ -98,6 +104,8 @@ HEADERS += \
     ../ui_homescreen.h \
     ../ui_librarianaccountpage.h \
     ../ui_librarianlogin.h \
+    ../ui_facultyaccountpage.h \
+    ../ui_facultylogin.h \
     ../ui_searchbyauthorpage.h \
     ../ui_searchbyisbnpage.h \
     ../ui_searchbytitlepage.h \
